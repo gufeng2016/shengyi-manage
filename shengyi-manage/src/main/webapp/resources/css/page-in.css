@@ -1,0 +1,160 @@
+body{ background-color:#fff;padding-top: 10px; padding-bottom: 10px;}
+
+.ml20{margin-left:20px;}
+.mb10{margin-bottom:10px;}
+.mb20{margin-bottom:20px;}
+.twoColSpanTable{border: 0 none;}
+.twoColSpanTable tr{}
+.twoColSpanTable td{
+    border: 0 none;
+}
+.twoColSpanTable label{
+    display: inline-block;
+    width: 100px;
+    padding-right: 10px;
+}
+.twoColSpanTable select{
+    width: 100px;
+    margin-right: 10px;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-size: initial;
+}
+.faceul{}
+.faceul ul{overflow:hidden;}
+.faceul ul li{
+	float:left;
+	text-align:center;
+	margin:0 10px 20px 0;
+}
+.faceul ul li.clear{
+	clear:both;
+	margin:0;
+}
+.faceul ul li img{
+	display:block;
+	width:100px;
+}
+.faceul ul li a{
+	font-size:12px;
+}
+
+.table-striped tbody > tr:nth-child(odd) > td, .table-striped tbody > tr:nth-child(odd) > th{
+    background:none;
+}
+.ui-jqgrid-pager{
+    height:32px !important;
+}
+.ui-jqgrid .ui-pg-selbox{
+    height:auto;
+}
+.ui-jqgrid .ui-pg-input {
+    width:50px;
+}
+
+/*不能点开的去掉+号*/
+.jqgrow .ui-sgcollapsed a{
+    display: none !important;
+}
+.sz7road-folder .ui-sgcollapsed a{
+    display: inline-block !important;
+}
+
+/*绝对定位的“隐藏”*/
+.position-hidden{
+    position:absolute;
+    left: -9999px;
+    top:0;
+}
+
+/*表单提示错误信息*/
+.form-error-msg{
+    color: red;
+}
+
+/*加号变大*/
+.ui-jqgrid .ui-jqgrid-btable .ui-sgcollapsed span {
+    /*zoom: 1.3;
+    margin-left: -2px;*/
+}
+
+/*覆盖jqdialog的按钮样式*/
+.ui-button .ui-button-text{
+    display: inline-block;
+    padding: 4px 12px;
+    margin-bottom: 0;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #333333;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    background-color: #f5f5f5;
+    background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+    background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+
+    border: 1px solid #cccccc;
+    border-bottom-color: #b3b3b3;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+
+.ui-button .ui-button-text:hover,
+.ui-button .ui-button-text:focus,
+.ui-button .ui-button-text.active {
+    color: #333333;
+    background-color: #e6e6e6;
+}
+.ui-button .ui-button-text:hover,
+.ui-button .ui-button-text:focus {
+    color: #333333;
+    text-decoration: none;
+    background-position: 0 -15px;
+    -webkit-transition: background-position 0.1s linear;
+    -moz-transition: background-position 0.1s linear;
+    -o-transition: background-position 0.1s linear;
+    transition: background-position 0.1s linear;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default{
+    border:0 none;
+}
+
+
+
+.sz7road-ico{
+  line-height: 0;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  border: 0 none;
+  outline: none;
+  background: url("images/zTreeStandard.png") no-repeat;
+}
+
+.sz7road-ico-folder{
+  background-position: -110px 0;
+  vertical-align: top;
+}
+
+/*显示和隐藏操作区域的按钮*/
+.toggleZoneBtn{
+    float:right;
+    margin-right: 20px;
+}
+
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="share-manage"
+  id="myeclipse.1502864761511"
+  context-root="/share-manage"
+  j2ee-spec="1.7"
+  archive="share-manage.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

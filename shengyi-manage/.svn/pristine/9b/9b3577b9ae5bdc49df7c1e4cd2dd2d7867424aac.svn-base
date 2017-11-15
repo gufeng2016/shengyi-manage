@@ -1,0 +1,98 @@
+/**
+ */
+package com.sz.dao.usermain.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.sz.common.annotation.ChooseDataSource;
+import com.sz.common.constant.DataSourceConstant;
+import com.sz.common.db.JDBCBaseDao;
+import com.sz.common.util.ReflectUtil;
+import com.sz.dao.usermain.UserMainDao;
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.sqlEntry.SQLCondition;
+import com.sz.pojo.manage.usermain.UserMain;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-16   下午4:16:53 
+ * @version 1.0.0 
+ */
+@Repository
+public class UserMainDaoImpl implements UserMainDao{
+	
+	@Autowired
+	private JDBCBaseDao jdbcDao;
+	
+	private static String COUNT_SQL = " select count(1) from t_user_main where 1=1 ";
+	private static String nickName = "UM";
+	/**
+	 * @throws Exception 
+	 */
+	@Override
+	@ChooseDataSource(mainType=DataSourceConstant.BIZ_TYPE_SLAVE,bizType=DataSourceConstant.PROJECT_SUFFIX)
+	public PaginationResult<UserMain> queryUserMainList(Class<UserMain> clazz, List<SQLCondition> list, PageInfo info, String order) throws Exception {
+		String sqlParams = ReflectUtil.createSqlParams(UserMain.class,nickName);
+		sqlParams = sqlParams.replace((nickName+".mobile").toUpperCase(), "AC.MOBILE");
+		sqlParams = sqlParams.replace((nickName+".regist_time").toUpperCase(), "AC.CREATE_TIME");
+		sqlParams = sqlParams.replace((nickName+".is_Effect").toUpperCase(), "AC.IS_EFFECT");
+		String sqlMuBan = "SELECT %s FROM T_USER_MAIN %s LEFT JOIN T_ACCOUNT AC ON %s.USER_ID = AC.USER_ID where 1=1 ";
+		String sql = String.format(sqlMuBan, sqlParams,nickName,nickName);
+		String sqlFoot = "";
+		List<Object> args = new ArrayList<Object>();
+		if(list != null && list.size()>0){
+			for (SQLCondition con : list) {
+				if(con.isLike()){
+					sqlFoot += " and "+("AC."+con.getKey()).toUpperCase() + " like ?";
+					args.add("%"+con.getValue()+"%");
+				}else{
+					sqlFoot += " and "+(nickName+"."+con.getKey()).toUpperCase() + " = ?";
+					args.add(con.getValue());
+				}
+			}
+		}
+		int count = jdbcDao.queryForInt(String.format(sqlMuBan, "count(1)",nickName,nickName)+sqlFoot,args.toArray());
+		sql += sqlFoot;
+		System.out.println("最终sql："+sql+sqlFoot);
+		String detailSql = " select user_id , identify_number from t_user_detail_%d where user_id = ? ";
+		List<UserMain> lists = jdbcDao.queryList(UserMain.class, sql,args.toArray());
+		if(lists != null && lists.size()>0){
+			for (UserMain userMain : lists) {
+				Long userId = userMain.getUserId();
+				List<Map<String, Object>> resMaps = jdbcDao.queryForMapList(String.format(detailSql,userId%13+1), userMain.getUserId());
+				if(resMaps != null && resMaps.size()>0){
+					Map<String, Object> resMap = resMaps.get(0);
+					String idcard = String.valueOf(resMap.get("identify_number"));
+					userMain.setIdentifyNumber(idcard);
+				}
+			}
+		}
+		return new PaginationResult<UserMain>(count, lists);
+	}
+	/**
+	 */
+	@Override
+	@ChooseDataSource(mainType=DataSourceConstant.BIZ_TYPE_MASTER,bizType=DataSourceConstant.PROJECT_SUFFIX)
+	public boolean forbiddingUser(String userId, Integer forbid) {
+		String sql = " update t_account set is_effect = ? where user_id = ? ";
+		int con = jdbcDao.update(sql,forbid,userId);
+		return con>0;
+	}
+	/**
+	 */
+	@Override
+	@ChooseDataSource(mainType=DataSourceConstant.BIZ_TYPE_MASTER,bizType=DataSourceConstant.PROJECT_SUFFIX)
+	public boolean updateUserMoney(String userId, Double money) {
+		String sql = " update t_user_main set money = ? where user_id = ? ";
+		int con = jdbcDao.update(sql,money,userId);
+		return con>0;
+	}
+	
+}

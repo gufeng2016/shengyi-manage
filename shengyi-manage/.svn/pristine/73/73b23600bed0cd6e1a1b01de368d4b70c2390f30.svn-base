@@ -1,0 +1,65 @@
+/**
+ */
+package com.sz.dao.usermain;
+
+import java.util.List;
+
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.sqlEntry.SQLCondition;
+import com.sz.pojo.manage.usermain.UserMain;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-16   下午4:16:38 
+ * @version 1.0.0 
+ */
+public interface UserMainDao  {
+
+	/**
+	 * @author goff.yin 
+	 * @date 2017-8-16 下午5:05:45  
+	 * @version 1.0.0 
+	 * @param class1
+	 * @param object
+	 * @param info
+	 * @param string
+	 * @return
+	 * @throws Exception 
+	 */
+	PaginationResult<UserMain> queryUserMainList(Class<UserMain> clazz, List<SQLCondition> list, PageInfo info, String order) throws Exception;
+
+	/**
+	 * 封号
+	 * @author goff.yin 
+	 * @date 2017-8-16 下午8:11:26  
+	 * @version 1.0.0 
+	 * @param userId
+	 * @param forbid 
+	 * @return
+	 */
+	boolean forbiddingUser(String userId, Integer forbid);
+
+	/**
+	 * @author goff.yin 
+	 * @date 2017-8-16 下午9:32:59  
+	 * @version 1.0.0 
+	 * @param userId
+	 * @param money
+	 * @return
+	 */
+	boolean updateUserMoney(String userId, Double money);
+
+	/**
+	 * @author goff.yin 
+	 * @date 2017-8-17 下午5:09:37  
+	 * @version 1.0.0 
+	 * @param userId
+	 * @param depAmount
+	 * @param amount
+	 * @return
+	 */
+	boolean updateUserDepositAmountAndMoney(Long userId, double depAmount, double amount);
+
+}

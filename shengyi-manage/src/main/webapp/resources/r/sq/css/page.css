@@ -1,0 +1,481 @@
+@charset "utf-8";
+
+.main {
+    position: relative;
+    margin: 0 auto;
+    width: 980px;
+	padding-bottom: 30px;
+}
+.data{
+    background:#282d38 url(http://image1.sq.wan.com/sq/gamedata/data-bg.jpg?v=20140623) center top no-repeat;
+}
+.detail-bg{
+    background:#282d38 url(http://image1.sq.wan.com/sq/gamedata/detail-bg.jpg?v=20140623) center top no-repeat;
+}
+
+/*--- banner --*/
+.right-banner{
+    width:654px;
+    margin: 0 auto;
+    padding:20px 0 0;
+}
+.right-banner a img{
+    width:654px;
+    height:130px;
+}
+
+/************************************************************游戏资料**********************************************************/
+.gamedata-main{
+    margin: 0 auto;
+    width: 657px;
+}
+.gamedata-block{
+    font-family: "Microsoft Yahei";
+}
+.gamedata-block .hd{
+    background: url(http://image4.sq.wan.com/sq/gamedata/data-sort.jpg?v=2014623) no-repeat;
+    width: 590px;
+    height: 33px;
+    padding: 30px 0 0 67px;
+    clear: both;
+    line-height: 32px;
+    overflow: hidden;
+}
+.gamedata-block .hd h3{
+    color: #6d88c6;
+    font-size: 20px;
+}
+.gamedata-block .hd h3 span{
+    padding-left: 5px;
+    font-size: 10px;
+    color: #536187;
+}
+.gamedata-block .bd{
+    background:#323b52;
+    border:1px solid #2c3447;
+    padding:20px 12px 12px;
+    border-radius: 2px;
+}
+.bd-in{overflow:hidden;*width:100%;*zoom:1;}
+
+
+.gamedata-block-intro .bd{padding-top:25px; padding-bottom:25px;}
+
+/*tab默认*/
+.gamedata-block .bd{ 
+    padding:0 0 0 20px;
+}
+.gamedata-block .bd-in{
+    *padding-bottom: 10px;
+}
+
+.gamedata-block .bd-in div{ 
+    display:none;
+}
+.gamedata-block .bd-in div.tagCont{ 
+    display:block;
+}
+
+.tabMenu-data{
+    padding-bottom: 14px;
+    overflow: hidden;
+}
+.tabMenu-data a{ 
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px; 
+    margin:25px 5px 0 0;
+    position: relative;
+    background: #3e4d74;
+    font-size: 14px;
+    color: #9fb2e0;
+    border: 1px solid #2a3244;
+}
+.tabMenu-data a i{ 
+    display:none; 
+    width:9px; 
+    height:7px; 
+    position:absolute; 
+    left:50%; 
+    margin-left:-5px; 
+    top:28px; 
+    background:url(http://image1.sq.wan.com/sq/gamedata/data-dot.jpg?v=20140623) no-repeat;
+}
+
+.bd-in div a{ 
+    display:inline-block; 
+    float:left; 
+    width:90px; 
+    text-align:center; 
+    color:#8fa0c6; 
+    border-left:1px solid #58B0FF; 
+    border-right:1px solid #58B0FF; 
+    line-height:14px;
+	height: 14px;
+    margin:0 0 10px -1px; 
+    overflow: hidden;
+}
+.bd-in div a:hover{ color:#fff;}
+/*tab切换*/
+.tabMenu-data a.nav-tag{ 
+    background:#485e98;
+    color: #dde7ff;
+}
+.tabMenu-data a.nav-tag i{ display:inline-block;}
+
+
+
+.gamedata-block-beginner .hd {
+    background-position:0 0;
+}
+.gamedata-block-master .hd {
+    background-position:0 -63px;
+}
+.gamedata-block-system .hd {
+    background-position:0 -126px;
+}
+.gamedata-block-big .hd {
+    background-position:0 -189px;
+}
+.gamedata-block-intro .hd {
+    background-position:0 -252px;
+}
+
+.profession{
+    padding:5px 0 40px 15px;
+    overflow: hidden;
+}
+.profession ul li{
+    float: left;
+    width: 284px;
+    height: 91px;
+    margin: 24px 24px 0 0;
+}
+/*分享*/
+.share{
+    color: #4d6a9d;
+    height: 18px;
+    line-height: 18px;
+    padding:0 0 30px;
+    overflow: hidden;
+    text-align: center;
+}
+.share span{
+    float: left;
+}
+.share span.share-title{
+    margin: 0 0 0 235px;
+}
+.article-main {
+    width:655px;
+    margin:0 auto;
+    color:#949cae;
+    position: relative;
+    background: #323b52;
+    clear: both;
+	word-wrap: break-word; 
+	word-break: normal; 
+	_overflow: hidden;
+}
+.article-main h2{
+    color: #6997FF;
+    font:bold 22px/30px "Microsoft YaHei";
+    padding: 20px 0 10px;
+    overflow: hidden;
+    text-align: center;
+	margin: 0 15px;
+}
+.article-nav{
+    color: #4d6a9d;
+    height: 16px;
+    line-height: 16px;
+    padding: 7px 0 7px 10px;
+    text-align: center;
+}
+.article-nav span{
+    padding: 0 5px;
+}
+.article-nav a{
+    color: #4d6a9d;
+}
+.article-main img {
+	max-width: 585px;
+}
+/************************************************************新闻列表和新闻详细页start************************************************************/
+.news-bg{
+    background:#252c3b url(http://image1.sq.wan.com/sq/news/news-bg.jpg?v=20140623) top center no-repeat;
+}
+.news-list-main{
+    padding-bottom:30px;
+}
+
+
+
+/*新闻列表*/
+.pageNewsList {
+    margin:0 auto;
+	clear: both;
+}
+.pageNewsList ul{
+    min-height: 850px;
+}
+.pageNewsList ul li{
+    border-bottom: 1px dashed #3d4455;
+    height: 20px;
+    line-height: 20px;
+    padding: 10px 10px 10px 5px;
+    color: #8fa0c6;
+    overflow: hidden;
+}
+.pageNewsList ul li.top-empty{
+     background:#1F2365;
+     border:0 none;
+     padding:0;
+     height:7px;
+}
+.pageNewsList ul li a{
+    color:#8fa0c6;
+}
+
+.pageNewsList ul li .newsDate{
+    float: right;
+    text-align: right;
+    width: 80px;
+}
+.pageNewsList ul li .newsListDot{
+    float: left;
+    font-size: 8px;
+    font-weight: bold;
+    width: 15px;
+}
+.pageNewsList ul li .newsTitle{
+    float: left;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 520px;
+}
+.newsDetail{
+    padding: 0 35px;
+}
+/*一键收听微博*/
+.page-weibo{
+    margin:20px auto 0;
+    width:380px;
+}
+/*相关新闻*/
+.relatedNews{
+    margin: 30px auto 0;
+    padding-bottom: 30px;
+    width: 585px;
+}
+.relatedNews p{
+    color: #6880bb;
+    font-size: 20px;
+    font-family: "Microsoft Yahei";
+    padding-bottom:5px;
+}
+.relatedNews p span{
+    font-size: 14px;
+    color: #495f97;
+    padding-left: 5px;
+}
+.relatedNews p a{
+    float: right;
+    font-size: 12px;
+    color: #4f5c7b;
+}
+.relatedNews ul{
+    color:#949cae;
+    zoom:1;
+    background: #262c3b;
+    overflow: hidden;
+    padding: 10px 0;
+}
+.relatedNews ul li{
+    float: left;
+    height: 24px;
+    overflow: hidden;
+    width: 272px;
+    margin-left: 20px;
+    display: inline;
+}
+.relatedNews ul li a{
+    color:#949cae;
+}
+.relatedNews ul li span{
+    font-size: 8px;
+    font-weight: bold;
+    padding-right: 2px;
+}
+.relatedMaterial ul li{
+    float: left;
+    height: 30px;
+    width: 122px;
+}
+.relatedMaterial ul li a{
+    float: left;
+    height: 30px;
+    overflow: hidden;
+    text-align: center;
+    width: 100px;
+}
+.relatedMaterial ul li span{
+    float: left;
+    padding: 0;
+    text-align: center;
+    width: 22px;
+}
+/*************************************************活动专题************************************************************/
+.activity{
+    background:#282d38 url(http://image1.sq.wan.com/sq/activity/activity-bg.jpg?v=20140623) center top no-repeat;
+}
+
+.activityList{
+    margin: 0 auto;
+    width: 654px;
+    position:relative;
+}
+.activityList ul {
+    min-height: 840px;
+}
+.activityList ul li {
+    border-bottom: 1px solid #3d4455;
+    height: 157px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+}
+.activityPic {
+    float: left;
+    height: 157px;
+}
+.activityPic a {
+    background: #1f2431;
+    border: 1px solid #3b4255;
+    display: block;
+    height: 150px;
+    overflow: hidden;
+    padding: 4px;
+    width: 230px;
+}
+.activityPic a img {
+    height: 150px;
+    width: 230px;
+}
+.activityMain {
+    float: right;
+    line-height: 24px;
+    width: 390px;
+	overflow: hidden;
+	height: 160px;
+    position:relative;
+    font-family: "Microsoft Yahei";
+}
+.activityMain h3 {
+    font-size: 20px;
+	height: 30px;
+	line-height: 30px;
+	white-space: nowrap;
+	word-break: keep-all; 
+	overflow: hidden; 
+	width: 370px;
+	text-overflow: ellipsis;
+    font-weight: normal;
+}
+.activityMain h3 a {
+    color: #6480c3;
+}
+.activityMain h4 {
+    color: #6480c3;
+    font-size: 14px;
+    font-weight: normal;
+}
+.activityMain p {
+    height: 48px;
+    color: #8fa0c6;
+    padding: 16px 0 0;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.enterActivity {
+    background: #3c4f7b;
+    border: 1px solid #3d5279;
+    height: 30px;
+    line-height: 30px;
+    color: #e0eaff;
+    font-size: 14px;
+    overflow: hidden;
+    text-align: center;
+    width: 108px;
+    position:absolute;
+    top: 123px;
+    left:0;
+}
+
+/*内页 的翻页*/
+.pageNum {
+    height: 31px;
+    margin: 0 auto;
+    padding: 50px 0 10px;
+    text-align: center;
+    width: 100%;
+    color: #A6A8FF;
+    clear:both;
+}
+.pageNum a {
+    background: #3a4d76;
+    border: 1px solid #41557e;
+    color: #98b7f7;
+    height: 16px;
+    line-height: 16px;
+    margin: 3px;
+    padding: 3px 6px 5px;
+    text-align: center;
+}
+.pageNum a.active {
+    color: #FF9307;
+}
+
+/*************************************************视频及图片下载区******************************************************/
+.picture-list{ 
+    background:#252c3b url(http://image1.sq.wan.com/sq/news/news-bg.jpg?ver=20140623) center top no-repeat;
+}
+.imgList li{ 
+    float:left; 
+	display: inline;
+    width:198px;
+	height: 180px;
+    margin-right:20px; 
+    margin-bottom:22px; 
+    text-align:center;
+	_overflow: hidden;
+}
+.imgList li img{ 
+    width:198px;
+	display: inline-block;
+	vertical-align: middle;
+	_vertical-align: top;
+}
+.imgList ul li .imgListPic{
+    display: block; 
+    width: 198px; 
+    height: 150px; 	
+    border:3px solid #353f57; 
+    overflow: hidden; 
+}
+.imgList ul li .imgListTxt {
+	height: 24px;
+	width: 198px;
+	white-space: nowrap;
+	word-break: keep-all;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.imgListTxt a:hover {
+	color: #949cae;
+}
+.downloadBox{ 
+    clear:both;
+}

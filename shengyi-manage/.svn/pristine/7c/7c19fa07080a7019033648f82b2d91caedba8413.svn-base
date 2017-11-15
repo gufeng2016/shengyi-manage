@@ -1,0 +1,64 @@
+/**
+ */
+package com.sz.service.usermain.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sz.common.util.StringUtil;
+import com.sz.dao.usermain.UserMainDao;
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.sqlEntry.SQLCondition;
+import com.sz.pojo.manage.usermain.UserMain;
+import com.sz.service.usermain.UserMainService;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-16   下午4:15:17 
+ * @version 1.0.0 
+ */
+@Service
+public class UserMainServiceImpl implements UserMainService{
+	
+	private static Logger logger = LoggerFactory.getLogger(UserMainServiceImpl.class);
+	
+	@Autowired
+	private UserMainDao userMainDao;
+	
+	/**
+	 * @throws Exception 
+	 */
+	@Override
+	public PaginationResult<UserMain> queryUserMainList(PageInfo info, String mobile) throws Exception {
+		
+		List<SQLCondition> lists = new ArrayList<SQLCondition>();
+		if(!StringUtil.isNullOrEmpty(mobile)){
+			lists.add(new SQLCondition("mobile", mobile,true));
+		}
+		return userMainDao.queryUserMainList(UserMain.class, lists, info, "");
+	}
+
+	/**
+	 */
+	@Override
+	public boolean forbiddingUser(String userId,Integer forbid) {
+		return userMainDao.forbiddingUser(userId,forbid);
+		
+	}
+
+	/**
+	 */
+	@Override
+	public boolean updateUserMoney(String userId, Double money) {
+		return userMainDao.updateUserMoney(userId,money);
+	}
+	
+	
+}

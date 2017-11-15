@@ -1,0 +1,59 @@
+/**
+ */
+package com.sz.control.recharge;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.sz.exception.MessageException;
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.recharge.RechargeOrder;
+import com.sz.service.recharge.RechargeService;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-17   上午10:20:08 
+ * @version 1.0.0 
+ */
+@Controller
+@RequestMapping("/rechargeOrder")
+public class RechargeCobtroller {
+	private static Logger logger = LoggerFactory.getLogger(RechargeCobtroller.class);
+	
+	@Autowired
+	private RechargeService rechargeService ;
+	
+	@RequestMapping(value = "/query")
+	public ModelAndView query(HttpServletRequest request) {
+		ModelAndView view = new ModelAndView();
+		try {
+			String mobile = request.getParameter("mobile");
+			if("".equals("1")){
+				throw new MessageException("滚一边去");
+			}
+			PageInfo info = PageInfo.getPageInfo(request);
+			PaginationResult<RechargeOrder> paginationResult = rechargeService.queryUserRechargeList(info,mobile);
+			view.addObject("mobile", mobile);
+			view.addObject("paginationResult", paginationResult);
+			view.setViewName("recharge.list");
+		}catch (MessageException e) {
+			view.setViewName("web.error");
+			view.addObject("errorMsg",e.getMessage());
+			logger.info("查询充值记录出现异常:", e.getMessage());
+		} catch (Exception e) {
+			view.setViewName("web.error");
+			view.addObject("errorMsg","系统错误！");
+			logger.error("查询充值记录出现异常", e);
+		}
+		return view;
+	}
+	
+}

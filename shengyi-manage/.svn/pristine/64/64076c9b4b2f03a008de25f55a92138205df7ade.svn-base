@@ -1,0 +1,48 @@
+/**
+ */
+package com.sz.service.refund.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sz.common.util.StringUtil;
+import com.sz.dao.refund.RefundOrderDao;
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.refund.RefundOrder;
+import com.sz.pojo.manage.sqlEntry.SQLCondition;
+import com.sz.service.refund.RefundOrderService;
+
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-17   下午2:19:05 
+ * @version 1.0.0 
+ */
+@Service
+public class RefundOrderServiceImpl implements RefundOrderService {
+	
+	private static Logger logger = LoggerFactory.getLogger(RefundOrderServiceImpl.class);
+	
+	@Autowired
+	private RefundOrderDao refundOrderDao;
+
+	/**
+	 */
+	@Override
+	public PaginationResult<RefundOrder> queryUserRefundOrderList( PageInfo info, String mobile) {
+		List<SQLCondition> lists = new ArrayList<SQLCondition>();
+		if(!StringUtil.isNullOrEmpty(mobile)){
+			lists.add(new SQLCondition("mobile", mobile,true));
+		}
+		return refundOrderDao.queryUserRefundOrderList(RefundOrder.class, lists, info, "");
+	}
+	
+	
+}

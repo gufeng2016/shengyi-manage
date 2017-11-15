@@ -1,0 +1,133 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="/WEB-INF/displaytag-el.tld" prefix="display-el" %>
+<%@ taglib uri="/WEB-INF/displaytag.tld" prefix="display" %>
+<%@ taglib prefix="pg" uri="/WEB-INF/pager-taglib.tld" %>
+<%@ taglib prefix="spt" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>
+<html>
+<body>
+
+    <div class="content-box-header">
+    	<div>
+        <h3 style="cursor: s-resize;">代理查询</h3>
+    	</div>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+
+        <div>
+            <form class="form-horizontal" action="${ctx}/agent/query" method="post">
+
+                <div class="control-group">
+                    <label class="control-label"> 关键字： </label>
+
+                    <div class="controls">
+                        <input type="text" class="small-input text-input" name="agentName" value="${agentName}" maxlength="20"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn button">查询</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div style="margin-bottom: 5px; margin-top: 20px;">   
+        	<c:if test="${isManager|| list[0].agentLevel < 3}">
+            	<button type="button" class="btn button" onclick="addAgent();">增加代理</button>
+            </c:if>
+        	<c:if test="${grandId > -1}">
+	       		<a href="javascript:void(0)" title="返回代理列表" onclick="returnAgentList(${grandId})">&lt;&lt;返回父代理列表</a>
+        	</c:if>
+        </div>
+            <div>
+        <table class="table table-hover table-bordered" style="margin-top: 5px">
+            <thead>
+            <tr>
+                <th>代理名字</th>
+                <th>简称</th>
+                <th>登录ID</th>
+                <th>所属父代理</th>
+                <th>代理等级</th>
+                <th>分成比例</th>
+                <th>流水分成比例</th>
+                <th>已结算金额</th>
+                <th>未结算金额</th>
+                <th>盈利</th>
+                <th>上分额度</th>
+                <th>子代理</th>
+                <c:if test="${canEdit || isManager}">
+                	<th>#</th>
+                </c:if>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${list}" var="item">
+                 <tr>
+                     <td>${item.agentName}</td>
+                     <td>${item.aliasName}</td>
+                     <td>${item.agentId}</td>
+                     <td>${empty item.parentAgentName ? '-' : item.parentAgentName}</td>
+                     <td>${item.agentLevel}</td>
+                     <td>${item.rsRatio}%</td>
+                     <td>${item.runRatio}‱</td>
+                     <td>${item.balanceMoney}</td>
+                     <td>${item.noBalanceMoney}</td>
+                     <td>
+                     	<c:if test="${item.currentMoney > 0}">
+                     		<font color="green">${item.currentMoney}</font>
+                     	</c:if>
+                     	<c:if test="${item.currentMoney < 0}">
+                     		<font color="red">${item.currentMoney}</font>
+                     	</c:if>
+                     </td>
+                     <td>${item.useableScore}</td>
+                     <td>
+                     	<a href="${ctx}/agent/query?parentId=<c:out value="${item.agentId}" />">查看子代理</a>
+                     	&nbsp;&nbsp;
+                     	<a href="${ctx}/agent/players?agentId=<c:out value="${item.agentId}" />">查看玩家</a>
+                     </td>
+                     <c:if test="${isManager || (canEdit && item.parentAgentId == user.userId)}">
+	                     <td>
+	                         <a href="update?agentId=${item.agentId}" title="编辑">编辑</a>
+	                         <a href="javascript:void(0)" title="删除" onclick="deleteItem('<c:out value="${item.agentId}"/>','<c:out value="${item.agentName}"/>','<c:out value="${item.parentAgentId}"/>')">删除</a>
+	                     </td>
+                     </c:if>
+                 </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</body>
+<script style="text/javascript">
+
+    function addAgent(){
+        location.href="${ctx}/agent/add";
+    }
+
+    <!-- 删除单个元素的函数 -->
+    function deleteItem(id,name, parentId){
+        if(window.confirm("确认要删除代理" + name + "吗？")){
+            $.post('${ctx}/agent/delete', {agentId:id}, function (data) {
+                if(data.code == 100){
+                    alert("代理【" + name + "】删除成功");
+                    location.href="${ctx}/agent/query?parentId=" + parentId;
+                } else{
+                    alert(data.message);
+                }
+            }) ;
+        } else {
+            return;
+        }
+    }
+
+    function returnAgentList(parentId){
+        location.href="${ctx}/agent/query?parentId=" + parentId;
+    }
+</script>
+</html>

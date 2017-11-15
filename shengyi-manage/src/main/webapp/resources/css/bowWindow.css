@@ -1,0 +1,36 @@
+.fugaicengOn{
+		width:100%;
+		height:200%;
+		position:absolute;
+		top:0;
+		left:0;
+		opacity:0.3;
+		z-index:88;
+		background:#333;
+}
+.editOrderViewOn{
+		width:450px;
+		height:300px;
+		position:absolute;
+		top:35%;
+		left:50%;
+		z-index:90;
+		margin-left:-200px;
+		margin-top:-150px;
+		background:#eee;
+		padding:20px auto;
+		display:block;
+}
+.fugaicengOff{
+		width:0;
+		height:0;
+		position:absolute;
+		top:0;
+		left:0;
+		opacity:0.3;
+		z-index:88;
+		background:red;
+}
+.editOrderViewOff{
+	display:none;
+}

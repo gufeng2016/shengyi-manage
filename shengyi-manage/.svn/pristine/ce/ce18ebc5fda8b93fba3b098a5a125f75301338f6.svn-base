@@ -1,0 +1,127 @@
+/**
+ */
+package com.sz.control.usermain;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.sz.common.util.StringUtil;
+import com.sz.exception.MessageException;
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.usermain.UserMain;
+import com.sz.service.usermain.UserMainService;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-16   下午3:48:58 
+ * @version 1.0.0 
+ */
+@Controller
+@RequestMapping(value = "/usermain")
+public class UserMainController {
+	
+	private static Logger logger = LoggerFactory.getLogger(UserMainController.class);
+	
+	@Autowired
+	private UserMainService userMainService;
+	
+	@RequestMapping(value = "/query")
+	public ModelAndView query(HttpServletRequest request) {
+		ModelAndView view = new ModelAndView();
+		try {
+			String mobile = request.getParameter("mobile");
+			if("".equals("1")){
+				throw new MessageException("滚一边去");
+			}
+			PageInfo info = PageInfo.getPageInfo(request);
+			PaginationResult<UserMain> paginationResult = userMainService.queryUserMainList(info,mobile);
+			view.addObject("paginationResult", paginationResult);
+			view.setViewName("usermain.list");
+			logger.info("查询用户信息成功");
+		}catch (MessageException e) {
+			view.setViewName("web.error");
+			view.addObject("errorMsg",e.getMessage());
+			logger.info("查询用户信息出现异常:", e.getMessage());
+		} catch (Exception e) {
+			view.setViewName("web.error");
+			view.addObject("errorMsg","系统错误！");
+			logger.error("查询用户信息出现异常", e);
+		}
+		return view;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/forbid")
+	public Map<String, Object> forbid(HttpServletRequest request) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		try {
+			String userId = request.getParameter("userId");
+			if(StringUtil.isNullOrEmpty(userId)){
+				throw new MessageException("缺少用户Id");
+			}
+			String forbid = request.getParameter("forbid");
+			if(StringUtil.isNullOrEmpty(forbid)){
+				throw new MessageException("缺少用户forbid类型");
+			}
+			boolean bx = userMainService.forbiddingUser(userId,Integer.valueOf(forbid));
+			if(!bx){
+				throw new MessageException("操作失败！");
+			}
+			resultMap.put("code", "0000");
+			resultMap.put("msg", "操作成功");
+		}catch (MessageException e) {
+			logger.info("封号出现异常:", e.getMessage());
+			resultMap.put("code", "9999");
+			resultMap.put("msg", e.getMessage());
+		} catch (Exception e) {
+			logger.error("封号出现异常", e);
+			resultMap.put("code", "9999");
+			resultMap.put("msg", "操作失败");
+		}
+		return resultMap;
+		
+	}
+	@ResponseBody
+	@RequestMapping(value = "/updateMoney")
+	public Map<String, Object> updateMoney(HttpServletRequest request) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		try {
+			String userId = request.getParameter("userId");
+			if(StringUtil.isNullOrEmpty(userId)){
+				throw new MessageException("缺少用户Id");
+			}
+			String money = request.getParameter("money");
+			if(StringUtil.isNullOrEmpty(money)){
+				throw new MessageException("缺少用户money");
+			}
+			boolean bx = userMainService.updateUserMoney(userId,Double.valueOf(money));
+			if(!bx){
+				throw new MessageException("操作失败！");
+			}
+			resultMap.put("code", "0000");
+			resultMap.put("msg", "操作成功");
+		}catch (MessageException e) {
+			logger.info("封号出现异常:", e.getMessage());
+			resultMap.put("code", "9999");
+			resultMap.put("msg", e.getMessage());
+		} catch (Exception e) {
+			logger.error("封号出现异常", e);
+			resultMap.put("code", "9999");
+			resultMap.put("msg", "操作失败");
+		}
+		return resultMap;
+		
+	}
+}

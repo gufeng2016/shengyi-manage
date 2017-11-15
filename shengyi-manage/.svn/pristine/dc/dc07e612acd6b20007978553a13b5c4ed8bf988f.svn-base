@@ -1,0 +1,178 @@
+<h1>top</h1>
+<h1>默认模板首页</h1>
+
+<pre>
+&#36;{fn_date()} = 1404109702325
+&#36;{fn_date('L')} = 20140630022822
+&#36;{fn_date('S')} = 20140630
+
+directive_site 标签使用
+siteId:         神曲官方网站
+customSiteId:   1
+url:            http://sq.wan.com
+icon:           31343033323333323636323638.png
+
+
+directive_site_list 标签使用
+        siteName:       神曲官方网站
+        customSiteId:   1
+        url:            http://sq.wan.com
+        icon:           31343033323333323636323638.png
+        
+        siteName:       弹弹堂官网
+        customSiteId:   2
+        url:            http://ddt.wan.com
+        icon:           31343030363630333338363039.jpg
+        
+
+directive_friend_link_list 标签使用
+        siteName:       37wan
+        siteUrl:        http://www.37wan.com
+        logoUrl:        http://www.37wan.com/logo.gif
+        siteDesc:       37玩
+        siteEmail:      admin@37wan.com
+        siteQq:         37
+        siteId:         6
+        hidden:         1
+        siteOrder:      0
+        
+        siteName:       百度
+        siteUrl:        http://www.baidu.com
+        logoUrl:        
+        siteDesc:       百度
+        siteEmail:      
+        siteQq:         
+        siteId:         6
+        hidden:         0
+        siteOrder:      0
+        
+        siteName:       畅游
+        siteUrl:        http://www.wan.com
+        logoUrl:        
+        siteDesc:       
+        siteEmail:      
+        siteQq:         
+        siteId:         6
+        hidden:         0
+        siteOrder:      0
+        
+        siteName:       4399
+        siteUrl:        http://web.4399.com
+        logoUrl:        http://web.4399.com/logo.gif
+        siteDesc:       4399
+        siteEmail:      admin@4399.com
+        siteQq:         9999
+        siteId:         6
+        hidden:         0
+        siteOrder:      1
+        
+
+directive_friend_link_list 标签使用
+    id:            1
+    title:         弹弹堂选美
+    imgUrl:        http://image.ddt.wan.com/images/ver1404/logo.png
+    linkUrl:       http://www.7road.com
+    remark:        首页右侧广告 100X100
+    createTime:    2014-6-10 12:17:12
+    
+    fn_replace:    http://www...
+
+directive_picture_list 标签使用
+        title:          测试标题1
+        content:        /web7road/upload/picture/14030832787788832.jpg
+        url:            http://www.google.com
+        orderNum:       1
+        
+        title:          测试1
+        content:        测试内容1
+        url:            http://www.wan.com
+        orderNum:       0
+        
+
+directive_photo 标签使用
+    id:                     1
+    photoCategoryId:        1
+    photoTitle:             弹弹堂截图
+    photoImageUrl:          /web7road/upload/photo/14031605931460651.gif
+    photoThumbnailUrl:      /web7road/upload/photo/14031605931460651.gif
+    createTime:             2014-6-23 15:23:30
+
+directive_photo_list 标签使用
+        id:                     5
+        photoCategoryId:        3
+        photoTitle:             弹弹堂4
+        photoImageUrl:          /web7road/upload/photo/14035103052166942.jpg
+        photoThumbnailUrl:      
+        createTime:             2014-6-23 15:59:24
+        
+        id:                     4
+        photoCategoryId:        3
+        photoTitle:             弹弹堂3
+        photoImageUrl:          /web7road/upload/photo/14035103051884276.jpg
+        photoThumbnailUrl:      
+        createTime:             2014-6-23 15:59:14
+        
+        id:                     3
+        photoCategoryId:        3
+        photoTitle:             弹弹堂2
+        photoImageUrl:          /web7road/upload/photo/14035103051374744.jpg
+        photoThumbnailUrl:      
+        createTime:             2014-6-23 15:58:37
+        
+        id:                     2
+        photoCategoryId:        3
+        photoTitle:             弹弹堂1
+        photoImageUrl:          /web7road/upload/photo/14035094346715399.jpg
+        photoThumbnailUrl:      
+        createTime:             2014-6-23 15:44:05
+        
+
+directive_photo_category 标签使用
+    id:                         1
+    siteId:                     7
+    photoCategoryName:          游戏截图
+    photoCategoryCoverImageUrl: /web7road/upload/photo/14031605931460651.gif
+    createTime:                 2014-6-19 12:30:40
+
+directive_photo_category_list 标签使用
+        id:                         5
+        siteId:                     7
+        photoCategoryName:          游戏漫画
+        photoCategoryCoverImageUrl: 
+        createTime:                 2014-6-23 14:22:33
+        
+        id:                         4
+        siteId:                     7
+        photoCategoryName:          游戏原画
+        photoCategoryCoverImageUrl: 
+        createTime:                 2014-6-23 14:22:20
+        
+        id:                         3
+        siteId:                     7
+        photoCategoryName:          游戏壁纸
+        photoCategoryCoverImageUrl: /web7road/upload/photo/14031613526670003.jpg
+        createTime:                 2014-6-19 14:51:15
+        
+        id:                         2
+        siteId:                     7
+        photoCategoryName:          玩家风采
+        photoCategoryCoverImageUrl: /web7road/upload/photo/14031613526670003.jpg
+        createTime:                 2014-6-19 12:38:59
+        
+        id:                         1
+        siteId:                     7
+        photoCategoryName:          游戏截图
+        photoCategoryCoverImageUrl: /web7road/upload/photo/14031605931460651.gif
+        createTime:                 2014-6-19 12:30:40
+        
+
+常量使用:
+第七大道官网
+http://www.7road.com
+神曲、弹弹堂
+公司地址
+</pre>
+
+
+
+<h1>bottom</h1>

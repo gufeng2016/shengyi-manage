@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <!--基本布局-->
+    <definition name="baseLayout" template="/WEB-INF/web/tiles/baseLayout.jsp">
+        <put-attribute name="header" value="/WEB-INF/web/tiles/header.jsp"/>
+        <put-attribute name="left"   value="/WEB-INF/web/tiles/left.jsp"/>
+        <put-attribute name="body"   value="/WEB-INF/web/tiles/body.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/web/tiles/footer.jsp"/>
+    </definition>
+
+    <!--body布局-->
+    <definition name="innerLayout" template="/WEB-INF/web/tiles/innerLayout.jsp">
+        <put-attribute name="body" value="/WEB-INF/web/tiles/body.jsp" />
+    </definition>
+
+    <!--系统欢迎页面布局-->
+    <definition name="welcome" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/jsp/welcome.jsp"/>
+    </definition>
+</tiles-definitions>

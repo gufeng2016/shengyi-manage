@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+    <!--日志管理-->
+    <definition name="log.list" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/log/list.jsp"/>
+    </definition>
+
+    <!--角色管理 -->
+    <definition name="role.list" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/role/list.jsp"/>
+    </definition>
+
+    <definition name="role.add" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/role/add.jsp"/>
+    </definition>
+
+    <definition name="role.update" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/role/update.jsp"/>
+    </definition>
+
+    <definition name="role.auth.allocation" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/role/allocation.jsp"/>
+    </definition>
+
+    <!-- 用户管理 -->
+    <definition name="user.list" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/user/list.jsp"/>
+    </definition>
+
+    <definition name="user.add" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/user/add.jsp"/>
+    </definition>
+
+    <definition name="user.update" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/user/update.jsp"/>
+    </definition>
+    <definition name="user.password" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/user/password.jsp"/>
+    </definition>
+
+
+    <!--权限管理-->
+    <definition name="auth.list" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/auth/list.jsp"/>
+    </definition>
+
+    <definition name="auth.add" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/auth/add.jsp"/>
+    </definition>
+
+    <definition name="auth.update" extends="baseLayout">
+        <put-attribute name="body"   value="/WEB-INF/web/manage/auth/update.jsp"/>
+    </definition>
+
+
+</tiles-definitions>

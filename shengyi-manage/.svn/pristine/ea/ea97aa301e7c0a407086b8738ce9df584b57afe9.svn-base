@@ -1,0 +1,51 @@
+/**
+ */
+package com.sz.dao.refund;
+
+import java.util.List;
+
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.refund.RefundOrder;
+import com.sz.pojo.manage.sqlEntry.SQLCondition;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-17   下午2:21:08 
+ * @version 1.0.0 
+ */
+public interface RefundOrderDao {
+
+	/**
+	 * @author goff.yin 
+	 * @date 2017-8-17 下午2:28:02  
+	 * @version 1.0.0 
+	 * @param class1
+	 * @param lists
+	 * @param info
+	 * @param string
+	 * @return
+	 */
+	PaginationResult<RefundOrder> queryUserRefundOrderList(Class<RefundOrder> class1, List<SQLCondition> lists, PageInfo info,String order);
+
+	/**
+	 * @author goff.yin 
+	 * @date 2017-8-17 下午4:56:55  
+	 * @version 1.0.0 
+	 * @param refundId
+	 * @return
+	 */
+	RefundOrder findOrderById(Integer refundId);
+
+	/**
+	 * @author goff.yin 
+	 * @date 2017-8-17 下午5:01:15  
+	 * @version 1.0.0 
+	 * @param refundId
+	 * @param isAgree
+	 * @param remark 
+	 */
+	int updateRefundOrderAgree(Integer refundId, Integer isAgree, String remark);
+
+}

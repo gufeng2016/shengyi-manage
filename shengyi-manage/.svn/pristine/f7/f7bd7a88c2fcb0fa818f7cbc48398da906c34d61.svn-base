@@ -1,0 +1,112 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<html>
+<body>
+    <div class="content-box-header">
+        <h3 style="cursor: s-resize;">编辑运营</h3>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+        <sp:form cssClass="form-horizontal" action="${ctx}/operator/update" method="post" commandName="operator">
+           <sp:hidden path="id" />
+            
+            <div class="control-group">
+                <label class="control-label" > 微信ID： </label>
+                <div class="controls">
+                    <sp:input cssClass="small-input text-input" path="wechatId" required="required" />
+                    <span><sp:errors cssClass="input-notification error png_bg" path="wechatId"/></span>
+                </div>
+            </div>
+            
+             <div class="control-group">
+                <label class="control-label" > 微信昵称： </label>
+                <div class="controls">
+                    <sp:input cssClass="small-input text-input" path="wechatNick" required="required"/>
+                    <span><sp:errors cssClass="input-notification error png_bg" path="wechatNick"/></span>
+                </div>
+            </div>
+            
+            <c:if test="${canEditPlayNum}">
+	            <div class="control-group" id="playerNumDiv">
+	                <label class="control-label" > 游戏次数： </label>
+	                <div class="controls">
+	                	<label><font color="red">(${operator.playNum})</font></label>
+	                    <sp:input  cssClass="input-sm text-input" path="addPlayNum" size="10" type="number"  placeholder="整数为增加，负数为减少" oninput="if(value.length>10)value=value.slice(0,10)"/>
+	                    <span><sp:errors cssClass="input-notification error png_bg" path="addPlayNum"/></span>
+	                </div>
+	            </div>
+            </c:if>
+
+            
+            <div class="control-group"  id="sendBonusWechatIdDiv">
+                <label class="control-label" > 发红包者微信ID： </label>
+                <div class="controls">
+                	<ul class="addBonusUl">
+               			<c:if test="${empty operator.sendWechatIdList}">
+                        	<li><input class="small-input text-input" name="sendBonusWechatIds"/><a href="javascript:void(0);" class="add-bonus"></a></li>
+                       	</c:if>
+                       	<c:if test="${!empty operator.sendWechatIdList}">
+                        	<c:forEach items="${operator.sendWechatIdList}" var="item" varStatus="status">
+                        	<c:choose>
+                        		<c:when test="${status.first}">
+                        			<li><input class="small-input text-input" name="sendBonusWechatIds" value="${item}"/><a href="javascript:void(0);" class="add-bonus"></a></li>
+                        		</c:when>
+                        		<c:otherwise>
+                        			<li><input class="small-input text-input" name="sendBonusWechatIds" value="${item}"/><a href="javascript:void(0);" class="del-bonus"></a></li>
+                        		</c:otherwise>
+                        	</c:choose>
+                        	</c:forEach>
+                       	</c:if>
+                	</ul>
+                    <span><sp:errors cssClass="input-notification error png_bg" /></span>
+                </div>
+            </div>
+            
+<!--             <div class="control-group"> -->
+<!--                 <label class="control-label" >	MAC地址： </label> -->
+<!--                 <div class="controls"> -->
+<%--                     <sp:input cssClass="small-input text-input" path="macAddress"/> --%>
+<%--                     <span><sp:errors cssClass="input-notification error png_bg" path="macAddress"/></span> --%>
+<!--                 </div> -->
+<!--             </div> -->
+            
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">提交</button>
+                </div>
+            </div>
+        </sp:form>
+    </div>
+</body>
+
+<script type="text/javascript">
+$(function(){
+	$(".add-bonus").live("click",function(){
+		var _leng = $(".addBonusUl li").length;
+		if( _leng == 5 ){
+			return false;
+		}
+		var _html = '<li><input class="small-input text-input" name="sendBonusWechatIds"/>';
+		var _addHtml = '<a href="javascript:void(0);" class="add-bonus"></a>';
+		var _delHtml = '<a href="javascript:void(0);" class="del-bonus"></a></li>';
+// 		var _index = $(this).index();
+// 		$(this).remove();
+		$(".addBonusUl").append( (_html+_delHtml) );
+		
+	})
+	$(".del-bonus").live("click",function(){
+		var _addHtml = '<a href="javascript:void(0);" class="add-bonus"></a>';
+		var _index = $(".del-bonus").index(this);
+		$(this).parent().remove();
+// 		var _maxIndex = $(".del-bonus").length;
+// 		if( _index == _maxIndex ){
+// 			$(".addBonusUl li").eq(_index).append(_addHtml)
+// 		}
+	})
+})
+
+
+</script>
+</html>

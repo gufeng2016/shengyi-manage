@@ -1,0 +1,72 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ include file="../tiles/config.jsp"%>
+<%
+    String path = request.getContextPath();
+%>
+
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<title>后台登录管理</title>
+<link href="<%=path%>/resources/css/bootstrap.css" rel="stylesheet" />
+<link href="<%=path%>/resources/css/bootstrap-responsive.css" rel="stylesheet" />
+<link href="<%=path%>/resources/css/page.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="manager-login">
+		<!--logo-->
+
+		<!--登录输入框-->
+		<div class="box-center manager-mid">
+			<div class="login-wrap">
+				<div class="logo-wrap">
+					<div class="logo-ico logo-ico-ani">
+						<span class="cir lt"></span> <span class="cir lb"></span> <span
+							class="cir rb"></span> <span class="line v-line"></span> <span
+							class="line"></span>
+					</div>
+				</div>
+				<div class="login-fram">
+					<form class="form-inline" action="${ctx}/login" method="post">
+						<input class=" input-small" required pattern=".{1,20}" name="name" id="username" type="text" placeholder="用户名" >
+						<input class=" input-small" requried pattern=".{1,20}" 	type="password" name="password" id="password" placeholder="密 码" >
+						<input class="span1" type="text" name="captcha" placeholder="验证码">&nbsp;&nbsp;
+                        <img src="${ctx }/captcha" alt="验证码" id="kaptchaImage"/>
+                        <input type="submit" class="btn" value="登 录">
+					</form>
+				</div>
+				<div class="margin-top:20px;">
+					<font color="red">${error }</font>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--底部-->
+
+	<div class="footer">Copyright © 2011-2012 sq.7road.com Powered by
+		全民单车</div>
+	<script type="text/javascript" src="${ctx}/resources/js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="${ctx}/resources/js/bootstrap.js"></script>
+	<script>
+		$(function() {
+			$('#kaptchaImage').click(
+					function() {//生成验证码  
+						$(this).hide().attr(
+								'src',
+								'${ctx}/captcha?'
+										+ Math.floor(Math.random() * 100))
+								.fadeIn();
+					})
+		});
+
+		function _resHe() {
+			var _heg = $(window).height();
+			$(".manager-login").height(_heg - 100);
+		}
+		window.onload = window.onresize = _resHe;
+	</script>
+</body>
+</html>

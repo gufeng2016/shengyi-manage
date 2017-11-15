@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+label {
+    width: 100px;
+    display: inline-block;
+    text-align: right;
+}
+label.center{
+	text-align: center;
+}
+
+.item {
+    padding: .1rem 0;
+    font-size: .12rem;
+    border-bottom: solid 1px #e5e5e5;
+    width: 100%;
+}
+.item label{
+	float:left;
+}
+.detail{float:left;}
+input{
+	display: inline-block;
+	margin-left: .05rem;
+	padding: 0 .1rem;
+	color: #32B8B4;
+	border: solid 1px #32B8B4; 
+	border-radius: 5px;
+	height: .23rem;
+	line-height: .23rem;
+	font-size: .12rem;
+}
+.error-tips{
+	display:block;
+	
+}
+input.submit-btn{
+	margin-left:0;
+	margin-top:.1rem;
+}
+.send-bonus-id{
+	float:left;
+}
+.addBonusUl{
+	float:left;
+	margin-left: 0.03rem;
+}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix {
+  zoom: 1;
+}
+.addBonusUl{margin-top:-.1rem;}
+.addBonusUl li{margin-top:.1rem;}
+.addBonusUl .add-bonus{margin-left:.05rem;background:url('../../../images/add_circle_outline_32px.png') no-repeat; display:inline-block; width:32px; height:32px; background-size:32px 32px;     vertical-align: middle;}
+.addBonusUl .del-bonus{margin-left:.05rem;background:url('../../../images/highlight_remove_32px.png') no-repeat;display:inline-block; width:32px; height:32px;    vertical-align: middle; background-size:32px 32px; }

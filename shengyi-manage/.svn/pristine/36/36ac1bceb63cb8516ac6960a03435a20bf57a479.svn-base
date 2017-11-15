@@ -1,0 +1,144 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sp" %>
+<html>
+<body>
+    <div class="content-box-header">
+        <h3 style="cursor: s-resize;">增加玩家</h3>
+        <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+        <sp:form cssClass="form-horizontal" action="${ctx}/player/add" method="post" commandName="player">
+
+            <div class="control-group">
+                <label class="control-label" > 所属代理： </label>
+                <div class="controls">
+                    　 			<sp:select id="parentAgentSelect" cssClass="small-input text-input" items="${requestScope.agentList}" itemValue="agentId" itemLabel="agentName" path="parentAgentId"/>
+                    <span><sp:errors cssClass="input-notification error png_bg" path="parentAgentId"/></span>
+                </div>
+            </div>
+            
+           <div class="control-group">
+                <label class="control-label" > 用户名称： </label>
+                <div class="controls">
+                    <sp:input cssClass="small-input text-input" path="userName" maxlength="20" required="required"/>
+                    <span><sp:errors cssClass="input-notification error png_bg" path="userName"/></span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" > 密码： </label>
+                <div class="controls">
+                    <sp:password  path="userPwd" required="required"/>
+                    <span><sp:errors cssClass="input-notification error png_bg" path="userPwd"/>
+                   	 <c:if test="${pwdError}"><font color="red">请输入密码</font></c:if>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label" > 微信ID： </label>
+                <div class="controls">
+                    <sp:input cssClass="small-input text-input" path="wechatId" />
+                    <span><sp:errors cssClass="input-notification error png_bg" path="wechatId"/></span>
+                </div>
+            </div>
+            
+             <div class="control-group">
+                <label class="control-label" > 微信昵称： </label>
+                <div class="controls">
+                    <sp:input cssClass="small-input text-input" path="wechatNick" />
+                    <span><sp:errors cssClass="input-notification error png_bg" path="wechatNick"/></span>
+                </div>
+            </div>
+            
+<!--             <div class="control-group"> -->
+<!--                 <label class="control-label" > 是否为运营： </label> -->
+<!--                 <div class="controls"> -->
+<%--                     <sp:select cssClass="small-input text-input" path="isOperate" required="required" id="isOperateSelect"> --%>
+<%--               			<sp:option value="0">否</sp:option> --%>
+<%--                         <sp:option value="1">是</sp:option> --%>
+<%--                     </sp:select> --%>
+<%--                     <span><sp:errors cssClass="input-notification error png_bg" path="isOperate"/></span> --%>
+<!--                 </div> -->
+<!--             </div> -->
+            
+<!--               <div class="control-group" id="playerNumDiv"> -->
+<!--                 <label class="control-label" > 游戏次数： </label> -->
+<!--                 <div class="controls"> -->
+<%--                     <sp:input cssClass="small-input text-input" path="playNum" maxlength="20" pattern="^\d+$"/> --%>
+<%--                     <span><sp:errors cssClass="input-notification error png_bg" path="playNum"/></span> --%>
+<!--                 </div> -->
+<!--             </div> -->
+            
+<!--             <div class="control-group"> -->
+<!--                 <label class="control-label" > 手机： </label> -->
+<!--                 <div class="controls"> -->
+<%--                     <sp:input cssClass="small-input text-input" path="userPhone" pattern="^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$"/> --%>
+<%--                     <span><sp:errors cssClass="input-notification error png_bg" path="userPhone"/></span> --%>
+<!--                 </div> -->
+<!--             </div> -->
+            
+<!--             <div class="control-group"> -->
+<!--                 <label class="control-label" > 银行名称： </label> -->
+
+<!--                 <div class="controls"> -->
+<%--                     <sp:input  cssClass="small-input text-input" path="userBankName" size="20" placeholder="不超过50个字符" maxlength="50"/> --%>
+<%--                     <span><sp:errors cssClass="input-notification error png_bg" path="userBankName"/></span> --%>
+<!--                 </div> -->
+<!--             </div> -->
+            
+<!--             <div class="control-group"> -->
+<!--                 <label class="control-label" > 银行帐号： </label> -->
+
+<!--                 <div class="controls"> -->
+<%--                     <sp:input  cssClass="small-input text-input" path="userBankAct" size="20" placeholder="不超过50个字符" maxlength="50"/> --%>
+<%--                     <span><sp:errors cssClass="input-notification error png_bg" path="userBankAct"/></span> --%>
+<!--                 </div> -->
+<!--             </div> -->
+            
+<!--            <div class="control-group"> -->
+<!--                 <label class="control-label" > 银行账户名字： </label> -->
+
+<!--                 <div class="controls"> -->
+<%--                     <sp:input  cssClass="small-input text-input" path="userBankActname" size="20"  placeholder="不超过20个字符" maxlength="20"/> --%>
+<%--                     <span><sp:errors cssClass="input-notification error png_bg" path="userBankActname"/></span> --%>
+<!--                 </div> -->
+<!--             </div> -->
+
+            <div class="control-group">
+                <label class="control-label" >  </label>
+                <div class="controls">
+                    <button type="submit" class="btn button">增加用户</button>
+                </div>
+            </div>
+        </sp:form>
+    </div>
+</body>
+<script style="text/javascript">
+
+	$(function(){
+		var value = $("#isOperateSelect").val();
+		if(value == 1){
+			$("#playerNumDiv").show();
+		}else{
+			$("#playerNumDiv").hide();
+		}
+	});
+
+
+	//初始化select2插件
+	$('#parentAgentSelect').select2();
+	
+	$('#isOperateSelect').change(function() {
+		var value = $("#isOperateSelect").val();
+		if(value == 1){
+			$("#playerNumDiv").show();
+		}else{
+			$("#playerNumDiv").hide();
+		}
+	});
+</script>
+
+
+</html>

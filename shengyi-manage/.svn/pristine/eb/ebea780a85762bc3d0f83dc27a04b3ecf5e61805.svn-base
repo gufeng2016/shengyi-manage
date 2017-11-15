@@ -1,0 +1,28 @@
+/**
+ */
+package com.sz.service.refund;
+
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.refund.RefundOrder;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-17   下午2:18:58 
+ * @version 1.0.0 
+ */
+public interface RefundOrderService {
+
+	/**
+	 * 分页查询
+	 * @author goff.yin 
+	 * @date 2017-8-17 下午2:27:13  
+	 * @version 1.0.0 
+	 * @param info
+	 * @param mobile
+	 * @return
+	 */
+	PaginationResult<RefundOrder> queryUserRefundOrderList(PageInfo info,String mobile);
+
+}

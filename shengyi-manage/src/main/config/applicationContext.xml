@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                          http://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://www.springframework.org/schema/context
+                          http://www.springframework.org/schema/context/spring-context.xsd
+                          http://www.springframework.org/schema/mvc
+                          http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                          http://www.springframework.org/schema/aop
+                          http://www.springframework.org/schema/aop/spring-aop.xsd
+                          http://www.springframework.org/schema/task
+                          http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+    <!-- 初始化默认的转换器 -->
+    <mvc:annotation-driven validator="validator" />
+    
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <context:annotation-config />
+
+    <!--注解包扫描-->
+    <context:component-scan base-package="com.sz" />
+
+    <!-- 配置properties文件解析器-->
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"-->
+            <!--p:location="classpath:DBConfig.properties"-->
+            <!--p:fileEncoding="UTF-8"/>-->
+
+    <bean id="propertyConfig" class="com.sz.common.security.PropertyDecipher">
+        <property name="locations">
+            <list>
+                <value>classpath:DBConfig.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 游戏主数据源 -->
+    <bean id="db_master_game" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          p:driverClassName="${game.master.jdbc.driver.class.name}"
+          p:url="${game.master.jdbc.url}"
+          p:username="${game.master.jdbc.username}"
+          p:password="${game.master.jdbc.password}" />
+          
+    <!-- 游戏从数据源 -->
+    <bean id="db_slave_game" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          p:driverClassName="${game.slave.jdbc.driver.class.name}"
+          p:url="${game.slave.jdbc.url}"
+          p:username="${game.slave.jdbc.username}"
+          p:password="${game.slave.jdbc.password}" />
+          
+    <!-- 游戏配置数据源 -->
+    <bean id="db_conf_game" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          p:driverClassName="${game.config.jdbc.driver.class.name}"
+          p:url="${game.config.jdbc.url}"
+          p:username="${game.config.jdbc.username}"
+          p:password="${game.config.jdbc.password}" /> 
+          
+    <!-- 管理后台数据源 -->
+    <bean id="db_manage_game" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+          p:driverClassName="${game.manage.jdbc.driver.class.name}"
+          p:url="${game.manage.jdbc.url}"
+          p:username="${game.manage.jdbc.username}"
+          p:password="${game.manage.jdbc.password}" /> 
+              
+	<!--动态数据源 -->
+	<bean id="dataSource" class="com.sz.common.datasource.DynamicDataSource">
+		<property name="targetDataSources">
+			<map>
+				<entry key="db_master_game" value-ref="db_master_game" />
+				<entry key="db_slave_game" value-ref="db_slave_game" />
+				<entry key="db_conf_game" value-ref="db_conf_game" />
+				<entry key="db_manage_game" value-ref="db_manage_game" />
+			</map>
+		</property>
+		<!-- 配置默认数据源 -->
+		<property name="defaultTargetDataSource" ref="db_manage_game" />
+	</bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" p:dataSource-ref="dataSource" />
+
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+        <property name="order" value="1" />
+    </bean>
+
+    <!--tiles配置文件加载 -->
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>classpath:/tiles/tiles-template.xml</value>
+                <value>classpath:/tiles/tiles-config-auth.xml</value>
+                 <value>classpath:/tiles/tiles-config-manage.xml</value>
+            </list>
+        </property>
+        <property name="preparerFactoryClass"  value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory"/>
+    </bean>
+
+
+    <!-- 配置视图协商的属性-->
+    <bean id="contentNegotiationManagerFactoryBean"  class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <!-- 设置为true以忽略对Accept Header的支持-->
+        <property name="ignoreAcceptHeader" value="true" />
+        <!-- true，开启扩展名支持，false关闭支持 -->
+        <property name="favorPathExtension" value="false" />
+        <!-- 用于开启 /userinfo/123?format=json的支持 -->
+        <property name="favorParameter" value="true" />
+        <!-- 在没有扩展名和参数时即: "/user/1" 时的默认展现形式   -->
+        <property name="defaultContentType" value="text/html" />
+        <!--   参数值至mimeType的映射,即/rest?format=json json是key，application/json就是value暂时只支持json和xml -->
+        <property name="mediaTypes">
+            <map>
+                <entry key="json" value="application/json" />
+                <entry key="xml" value="application/xml" />
+                <entry key="html" value="text/html" />
+            </map>
+        </property>
+    </bean>
+
+    <!-- 配置视图协商解析器 -->
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="2" />
+        <property name="contentNegotiationManager" ref="contentNegotiationManagerFactoryBean" />
+        <property name="viewResolvers">
+            <list>
+                <!-- 配置视图信息-->
+                <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+                    <property name="prefix" value="/WEB-INF/web/"/>
+                    <property name="suffix" value=".jsp"/>
+                </bean>
+                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+            </list>
+        </property>
+        <property name="defaultViews">
+            <list>
+                <!-- json转换-->
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+            </list>
+        </property>
+    </bean>
+
+    <!--默认的web容器Servlet，用于静态资源访问 -->
+    <mvc:default-servlet-handler />
+
+    <!-- SpringMVC上传文件时，需要配置MultipartResolver处理器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 指定所上传文件的总大小不能超过1M。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
+        <property name="maxUploadSize" value="1000000"/>
+    </bean>
+
+    <!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->
+    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 -->
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <!-- 遇到MaxUploadSizeExceededException异常时，自动跳转到/WEB-INF/jsp/error_fileupload.jsp页面 -->
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">error_fileupload</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <!-- json mapper -->
+    <bean id="mapper" class="org.codehaus.jackson.map.ObjectMapper"/>
+
+    <!-- 配置静态资源目录 -->
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+    <mvc:resources mapping="/upload/**" location="/upload/" />
+
+    <!-- 配置拦截器 -->
+    <bean id="authInterceptor" class="com.sz.common.interceptor.AuthInterceptor" >
+       <!-- 配置不需要权限验证的URL -->
+        <property name="exceptUrls">
+            <list>
+                <value>/login</value>
+                <value>/mobile/login</value>
+                <value>/mobile/main</value>
+                <value>/captcha</value>
+                <value>/mobile/logout</value>
+                <value>/logout</value>
+                <value>/doc/index.html</value>
+                <value>/doc/template.html</value>
+                <value>/doc/about.html</value>
+            </list>
+        </property>
+        <property name="extensions">
+            <list>
+                <!-- 配置不需要权限验证的扩展名 -->
+                <value>js</value>
+                <value>css</value>
+                <value>png</value>
+                <value>gif</value>
+                <value>jpg</value>
+                <value>bmp</value>
+                <value>swf</value>
+                <value>html</value>
+                <value>woff</value>
+                <value>woff2</value>
+                <value>ttf</value>
+            </list>
+        </property>
+    </bean>
+
+   <mvc:interceptors>
+       <ref bean="authInterceptor" />
+    </mvc:interceptors>
+
+     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+         <property name="interceptors">
+             <list>
+                 <ref bean="authInterceptor" />
+             </list>
+         </property>
+     </bean>
+    <!-- 配置拦截器结束 -->
+
+    <!-- 定时器配置 -->
+    <task:scheduler id="messageTaskScheduler" pool-size="5" />
+	<task:annotation-driven scheduler="messageTaskScheduler" />
+
+    <import  resource="classpath:spring-validation.xml"/>
+<!--     <import  resource="classpath:spring-jedis.xml"/> -->
+
+    <!-- 用于持有ApplicationContext,可以使用SpringContextHolder.getBean('xxxx')的静态方法得到spring bean对象 -->
+    <bean class="com.sz.common.util.SpringContextHolder" lazy-init="false" />
+</beans>

@@ -1,0 +1,29 @@
+/**
+ */
+package com.sz.service.recharge;
+
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.recharge.RechargeOrder;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-17   上午10:23:09 
+ * @version 1.0.0 
+ */
+public interface RechargeService {
+
+	/**
+	 * 分页查询充值记录
+	 * @author goff.yin 
+	 * @date 2017-8-17 上午10:31:40  
+	 * @version 1.0.0 
+	 * @param info
+	 * @param mobile
+	 * @return
+	 * @throws Exception 
+	 */
+	PaginationResult<RechargeOrder> queryUserRechargeList(PageInfo info, String mobile) throws Exception;
+
+}

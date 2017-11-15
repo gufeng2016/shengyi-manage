@@ -1,0 +1,50 @@
+/**
+ */
+package com.sz.service.usermain;
+
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.usermain.UserMain;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-16   下午4:15:07 
+ * @version 1.0.0 
+ */
+public interface UserMainService {
+
+	/**
+	 * @author goff.yin 
+	 * @date 2017-8-16 下午4:32:49  
+	 * @version 1.0.0 
+	 * @param info 
+	 * @param mobile 
+	 * @return
+	 * @throws Exception 
+	 */
+	PaginationResult<UserMain> queryUserMainList(PageInfo info, String mobile) throws Exception;
+
+	/**
+	 * 封号
+	 * @author goff.yin 
+	 * @date 2017-8-16 下午8:10:25  
+	 * @version 1.0.0 
+	 * @param userId
+	 * @param forbid 
+	 * @return 
+	 */
+	boolean forbiddingUser(String userId, Integer forbid);
+
+	/**
+	 * 修改用户余额
+	 * @author goff.yin 
+	 * @date 2017-8-16 下午9:32:29  
+	 * @version 1.0.0 
+	 * @param userId
+	 * @param valueOf
+	 * @return
+	 */
+	boolean updateUserMoney(String userId, Double money);
+
+}

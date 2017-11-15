@@ -1,0 +1,120 @@
+/**
+ */
+package com.sz.service.refund.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sz.common.cache.JedisClient;
+import com.sz.common.constant.Constants;
+import com.sz.common.util.HttpClientUtil;
+import com.sz.common.util.MD5Util;
+import com.sz.common.util.StringUtil;
+import com.sz.dao.refund.RefundOrderDao;
+import com.sz.dao.usermain.UserMainDao;
+import com.sz.exception.MessageException;
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.refund.RefundOrder;
+import com.sz.pojo.manage.sqlEntry.SQLCondition;
+import com.sz.pojo.request.ResultMessage;
+import com.sz.service.manage.ConfigService;
+import com.sz.service.manage.impl.ConfigServiceImpl;
+import com.sz.service.refund.RefundOrderService;
+
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-17   下午2:19:05 
+ * @version 1.0.0 
+ */
+@Service
+public class RefundOrderServiceImpl implements RefundOrderService {
+	
+	private static Logger logger = LoggerFactory.getLogger(RefundOrderServiceImpl.class);
+	
+	@Autowired
+	private RefundOrderDao refundOrderDao;
+	
+	@Autowired
+	private UserMainDao userMainDao;
+	
+	@Autowired
+	private ConfigService configService;
+
+	/**
+	 */
+	@Override
+	public PaginationResult<RefundOrder> queryUserRefundOrderList( PageInfo info, String mobile) {
+		List<SQLCondition> lists = new ArrayList<SQLCondition>();
+		if(!StringUtil.isNullOrEmpty(mobile)){
+			lists.add(new SQLCondition("mobile", mobile,true));
+		}
+		return refundOrderDao.queryUserRefundOrderList(RefundOrder.class, lists, info, "");
+	}
+
+	/**
+	 */
+	@Override
+	public ResultMessage examineRefundOrder(Integer refundId, Integer isAgree, String remark) {
+		ResultMessage result = new ResultMessage("9999","操作失败");
+		try{
+			RefundOrder order = refundOrderDao.findOrderById(refundId);
+			if(order == null){
+				throw new MessageException("退款申请单不存在！");
+			}
+			if(isAgree == 0){//不同意退款,退还订单里退款金额
+				isAgree = Constants.REFUND_NOT_AGREE;
+				double amount = order.getRefundAmount();
+	    		double depAmount = order.getRefundAmount();
+	    		if(order.getIsDeposit() ==0){//正常订单
+	    			depAmount = 0;
+	    		}else{//押金
+	    			amount = 0;
+	    		}
+	    		boolean bx = userMainDao.updateUserDepositAmountAndMoney(order.getUserId(), depAmount, amount);
+	    		if(!bx){
+	    			throw new MessageException("修改用户余额失败");
+	    		}
+			}else{//同意退款
+				isAgree = Constants.REFUND_AGREE;
+			}
+			refundOrderDao.updateRefundOrderAgree(refundId,isAgree,remark);
+			String backUrl = configService.getCacheConfigByKey(Constants.REFUND_BACKURL);
+			String toParams = String.format("refundId=%d&sign=%s", refundId,createSign(refundId));
+			String resultMsg = HttpClientUtil.sendPost(backUrl, toParams);
+			logger.info("退款申请请求返回："+resultMsg);
+			result.setCode("0000");
+			result.setMessage("操作成功：等待第三方退款结果");
+		}catch (MessageException e) {
+			result.setCode("9999");
+			result.setMessage(e.getMessage());
+			logger.info(e.getMessage());
+		}catch (Exception e) {
+			result.setCode("9999");
+			result.setMessage("审核失败！");
+			logger.error(e.getMessage());
+		}
+		return result;
+	}
+
+	/**
+	 * @author goff.yin 
+	 * @date 2017-8-17 下午5:23:42  
+	 * @version 1.0.0 
+	 * @param refundId
+	 * @return
+	 */
+	private String createSign(Integer refundId) {
+		String toParams = String.format("refundId=%s&key=%s", String.valueOf(refundId),configService.getCacheConfigByKey(Constants.REFUND_PRIVATE_KEY));
+		return MD5Util.getMD5String(toParams);
+	}
+	
+	
+}

@@ -1,0 +1,1939 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body
+{
+  font-size:15px;
+  line-height:1.7;
+  overflow-x:hidden;
+
+    background-color: white;
+    border-radius: 3px;
+    border: 3px solid #EEE;
+    box-shadow: inset 0 0 0 1px #CECECE;
+    font-family: Helvetica, arial, freesans, clean, sans-serif;
+    max-width: 912px;
+    padding: 30px;
+    margin: 2em auto;
+
+    color:#333333;
+}
+
+
+.body-classic{
+  color:#444;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:16px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 1em;
+  outline: 1300px solid #FAFAFA;
+}
+
+body>:first-child
+{
+  margin-top:0!important;
+}
+
+body>:last-child
+{
+  margin-bottom:0!important;
+}
+
+blockquote,dl,ol,p,pre,table,ul {
+  border: 0;
+  margin: 15px 0;
+  padding: 0;
+}
+
+body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+body a:hover {
+  text-decoration: underline;
+}
+
+body a.absent
+{
+  color:#c00;
+}
+
+body a.anchor
+{
+  display:block;
+  padding-left:30px;
+  margin-left:-30px;
+  cursor:pointer;
+  position:absolute;
+  top:0;
+  left:0;
+  bottom:0
+}
+
+/*h4,h5,h6{ font-weight: bold; }*/
+
+.octicon{
+  font:normal normal 16px sans-serif;
+  width: 1em;
+  height: 1em;
+  line-height:1;
+  display:inline-block;
+  text-decoration:none;
+  -webkit-font-smoothing:antialiased
+}
+
+.octicon-link {
+  background: url("data:image/svg+xml;utf8,<?xml version='1.0' standalone='no'?> <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'> <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 832'> <metadata>Copyright (C) 2013 by GitHub</metadata> <!-- scale(0.01565557729941) --> <path transform='' d='M768 64h-192s-254 0-256 256c0 22 3 43 8 64h137c-11-19-18-41-18-64 0-128 128-128 128-128h192s128 0 128 128-128 128-128 128 0 64-64 128h64s256 0 256-256-256-256-256-256z m-72 192h-137c11 19 18 41 18 64 0 128-128 128-128 128h-192s-128 0-128-128 128-128 128-128-4-65 66-128h-66s-256 0-256 256 256 256 256 256h192s256 0 256-256c0-22-4-44-8-64z'/> </svg>");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.octicon-link:before{
+  content:'\a0';
+}
+
+body h1,body h2,body h3,body h4,body h5,body h6{
+  margin:1em 0 15px;
+  padding:0;
+  font-weight:bold;
+  line-height:1.7;
+  cursor:text;
+  position:relative
+}
+
+body h1 .octicon-link,body h2 .octicon-link,body h3 .octicon-link,body h4 .octicon-link,body h5 .octicon-link,body h6 .octicon-link{
+  display:none;
+  color:#000
+}
+
+body h1:hover a.anchor,body h2:hover a.anchor,body h3:hover a.anchor,body h4:hover a.anchor,body h5:hover a.anchor,body h6:hover a.anchor{
+  text-decoration:none;
+  line-height:1;
+  padding-left:0;
+  margin-left:-22px;
+  top:15%
+}
+
+body h1:hover a.anchor .octicon-link,body h2:hover a.anchor .octicon-link,body h3:hover a.anchor .octicon-link,body h4:hover a.anchor .octicon-link,body h5:hover a.anchor .octicon-link,body h6:hover a.anchor .octicon-link{
+  display:inline-block
+}
+
+body h1 tt,body h1 code,body h2 tt,body h2 code,body h3 tt,body h3 code,body h4 tt,body h4 code,body h5 tt,body h5 code,body h6 tt,body h6 code{
+  font-size:inherit
+}
+
+body h1{
+  font-size:2.5em;
+  border-bottom:1px solid #ddd
+}
+
+body h2{
+  font-size:2em;
+  border-bottom:1px solid #eee
+}
+
+body h3{
+  font-size:1.5em
+}
+
+body h4{
+  font-size:1.2em
+}
+
+body h5{
+  font-size:1em
+}
+
+body h6{
+  color:#777;
+  font-size:1em
+}
+
+body p,body blockquote,body ul,body ol,body dl,body table,body pre{
+  margin:15px 0
+}
+
+body h1 tt,body h1 code,body h2 tt,body h2 code,body h3 tt,body h3 code,body h4 tt,body h4 code,body h5 tt,body h5 code,body h6 tt,body h6 code
+{
+  font-size:inherit;
+}
+
+
+body hr
+{
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC);
+  background-repeat: repeat-x;
+  /*background:transparent url(http://overblown.net/files/markdown/dirty-shade.png) repeat-x 0 0;*/
+  background-color: transparent;
+  background-position: 0;
+  border:0 none;
+  color:#ccc;
+  height:4px;
+  margin:15px 0;
+  padding:0;
+}
+
+body li p.first
+{
+  display:inline-block;
+}
+
+body ul,body ol
+{
+  padding-left:30px;
+}
+
+body ul.no-list,body ol.no-list
+{
+  list-style-type:none;
+  padding:0;
+}
+
+body ul ul,body ul ol,body ol ol,body ol ul
+{
+  margin-bottom:0;
+  margin-top:0;
+}
+
+body dl
+{
+  padding:0;
+}
+
+body dl dt
+{
+  font-size:14px;
+  font-style:italic;
+  font-weight:700;
+  margin-top:15px;
+  padding:0;
+}
+
+body dl dd
+{
+  margin-bottom:15px;
+  padding:0 15px;
+}
+
+body blockquote
+{
+  border-left:4px solid #DDD;
+  color:#777;
+  padding:0 15px;
+}
+
+body blockquote>:first-child
+{
+  margin-top:0;
+}
+
+body blockquote>:last-child
+{
+  margin-bottom:0;
+}
+
+body table
+{
+  display:block;
+  overflow:auto;
+  width:100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding: 0;
+}
+
+body table th
+{
+  font-weight:700;
+}
+
+body table th,body table td
+{
+  border:1px solid #ddd;
+  padding:6px 13px;
+}
+
+body table tr
+{
+  background-color:#fff;
+  border-top:1px solid #ccc;
+}
+
+body table tr:nth-child(2n)
+{
+  background-color:#f8f8f8;
+}
+
+body img
+{
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  max-width:100%;
+}
+
+body span.frame
+{
+  display:block;
+  overflow:hidden;
+}
+
+body span.frame>span
+{
+  border:1px solid #ddd;
+  display:block;
+  float:left;
+  margin:13px 0 0;
+  overflow:hidden;
+  padding:7px;
+  width:auto;
+}
+
+body span.frame span img
+{
+  display:block;
+  float:left;
+}
+
+body span.frame span span
+{
+  clear:both;
+  color:#333;
+  display:block;
+  padding:5px 0 0;
+}
+
+body span.align-center
+{
+  clear:both;
+  display:block;
+  overflow:hidden;
+}
+
+body span.align-center>span
+{
+  display:block;
+  margin:13px auto 0;
+  overflow:hidden;
+  text-align:center;
+}
+
+body span.align-center span img
+{
+  margin:0 auto;
+  text-align:center;
+}
+
+body span.align-right
+{
+  clear:both;
+  display:block;
+  overflow:hidden;
+}
+
+body span.align-right>span
+{
+  display:block;
+  margin:13px 0 0;
+  overflow:hidden;
+  text-align:right;
+}
+
+body span.align-right span img
+{
+  margin:0;
+  text-align:right;
+}
+
+body span.float-left
+{
+  display:block;
+  float:left;
+  margin-right:13px;
+  overflow:hidden;
+}
+
+body span.float-left span
+{
+  margin:13px 0 0;
+}
+
+body span.float-right
+{
+  display:block;
+  float:right;
+  margin-left:13px;
+  overflow:hidden;
+}
+
+body span.float-right>span
+{
+  display:block;
+  margin:13px auto 0;
+  overflow:hidden;
+  text-align:right;
+}
+
+body code,body tt
+{
+  background-color:#f8f8f8;
+  border:1px solid #ddd;
+  border-radius:3px;
+  margin:0 2px;
+  padding:0 5px;
+}
+
+body code
+{
+  white-space:nowrap;
+}
+
+
+code,pre{
+  font-family:Consolas, "Liberation Mono", Courier, monospace;
+  font-size:12px
+}
+
+body pre>code
+{
+  background:transparent;
+  border:none;
+  margin:0;
+  padding:0;
+  white-space:pre;
+}
+
+body .highlight pre,body pre
+{
+  background-color:#f8f8f8;
+  border:1px solid #ddd;
+  font-size:13px;
+  line-height:19px;
+  overflow:auto;
+  padding:6px 10px;
+  border-radius:3px
+}
+
+body pre code,body pre tt
+{
+  background-color:transparent;
+  border:none;
+  margin:0;
+  padding:0;
+}
+
+body .task-list{
+  list-style-type:none;
+  padding-left:10px
+}
+
+.task-list-item{
+  padding-left:20px
+}
+
+.task-list-item label{
+  font-weight:normal
+}
+
+.task-list-item.enabled label{
+  cursor:pointer
+}
+
+.task-list-item+.task-list-item{
+  margin-top:5px
+}
+
+.task-list-item-checkbox{
+  float:left;
+  margin-left:-20px;
+  margin-top:7px
+}
+
+
+.highlight{
+  background:#ffffff
+}
+
+.highlight .c{
+  color:#999988;
+  font-style:italic
+}
+
+.highlight .err{
+  color:#a61717;
+  background-color:#e3d2d2
+}
+
+.highlight .k{
+  font-weight:bold
+}
+
+.highlight .o{
+  font-weight:bold
+}
+
+.highlight .cm{
+  color:#999988;
+  font-style:italic
+}
+
+.highlight .cp{
+  color:#999999;
+  font-weight:bold
+}
+
+.highlight .c1{
+  color:#999988;
+  font-style:italic
+}
+
+.highlight .cs{
+  color:#999999;
+  font-weight:bold;
+  font-style:italic
+}
+
+.highlight .gd{
+  color:#000000;
+  background-color:#ffdddd
+}
+
+.highlight .gd .x{
+  color:#000000;
+  background-color:#ffaaaa
+}
+
+.highlight .ge{
+  font-style:italic
+}
+
+.highlight .gr{
+  color:#aa0000
+}
+
+.highlight .gh{
+  color:#999999
+}
+
+.highlight .gi{
+  color:#000000;
+  background-color:#ddffdd
+}
+
+.highlight .gi .x{
+  color:#000000;
+  background-color:#aaffaa
+}
+
+.highlight .go{
+  color:#888888
+}
+
+.highlight .gp{
+  color:#555555
+}
+
+.highlight .gs{
+  font-weight:bold
+}
+
+.highlight .gu{
+  color:#800080;
+  font-weight:bold
+}
+
+.highlight .gt{
+  color:#aa0000
+}
+
+.highlight .kc{
+  font-weight:bold
+}
+
+.highlight .kd{
+  font-weight:bold
+}
+
+.highlight .kn{
+  font-weight:bold
+}
+
+.highlight .kp{
+  font-weight:bold
+}
+
+.highlight .kr{
+  font-weight:bold
+}
+
+.highlight .kt{
+  color:#445588;
+  font-weight:bold
+}
+
+.highlight .m{
+  color:#009999
+}
+
+.highlight .s{
+  color:#d14
+}
+
+.highlight .n{
+  color:#333333
+}
+
+.highlight .na{
+  color:#008080
+}
+
+.highlight .nb{
+  color:#0086B3
+}
+
+.highlight .nc{
+  color:#445588;
+  font-weight:bold
+}
+
+.highlight .no{
+  color:#008080
+}
+
+.highlight .ni{
+  color:#800080
+}
+
+.highlight .ne{
+  color:#990000;
+  font-weight:bold
+}
+
+.highlight .nf{
+  color:#990000;
+  font-weight:bold
+}
+
+.highlight .nn{
+  color:#555555
+}
+
+.highlight .nt{
+  color:#000080
+}
+
+.highlight .nv{
+  color:#008080
+}
+
+.highlight .ow{
+  font-weight:bold
+}
+
+.highlight .w{
+  color:#bbbbbb
+}
+
+.highlight .mf{
+  color:#009999
+}
+
+.highlight .mh{
+  color:#009999
+}
+
+.highlight .mi{
+  color:#009999
+}
+
+.highlight .mo{
+  color:#009999
+}
+
+.highlight .sb{
+  color:#d14
+}
+
+.highlight .sc{
+  color:#d14
+}
+
+.highlight .sd{
+  color:#d14
+}
+
+.highlight .s2{
+  color:#d14
+}
+
+.highlight .se{
+  color:#d14
+}
+
+.highlight .sh{
+  color:#d14
+}
+
+.highlight .si{
+  color:#d14
+}
+
+.highlight .sx{
+  color:#d14
+}
+
+.highlight .sr{
+  color:#009926
+}
+
+.highlight .s1{
+  color:#d14
+}
+
+.highlight .ss{
+  color:#990073
+}
+
+.highlight .bp{
+  color:#999999
+}
+
+.highlight .vc{
+  color:#008080
+}
+
+.highlight .vg{
+  color:#008080
+}
+
+.highlight .vi{
+  color:#008080
+}
+
+.highlight .il{
+  color:#009999
+}
+
+.highlight .gc{
+  color:#999;
+  background-color:#EAF2F5
+}
+
+.type-csharp .highlight .k{
+  color:#0000FF
+}
+
+.type-csharp .highlight .kt{
+  color:#0000FF
+}
+
+.type-csharp .highlight .nf{
+  color:#000000;
+  font-weight:normal
+}
+
+.type-csharp .highlight .nc{
+  color:#2B91AF
+}
+
+.type-csharp .highlight .nn{
+  color:#000000
+}
+
+.type-csharp .highlight .s{
+  color:#A31515
+}
+
+.type-csharp .highlight .sc{
+  color:#A31515
+}
+</style><title>template</title></head><body><h1>
+<a name="user-content-%E4%B8%83%E9%81%93%E5%AE%98%E7%BD%91%E6%A8%A1%E6%9D%BF%E5%88%B6%E4%BD%9C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97" class="anchor" href="#%E4%B8%83%E9%81%93%E5%AE%98%E7%BD%91%E6%A8%A1%E6%9D%BF%E5%88%B6%E4%BD%9C%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97" aria-hidden="true"><span class="octicon octicon-link"></span></a>七道官网模板制作使用指南</h1>
+
+
+
+<ul>
+<li>常用标签
+
+<ul>
+<li>文章标签</li>
+<li>配置信息标签(directive_config)</li>
+<li>站点信息标签 (directive_site)</li>
+<li>站点信息标签 (directive_site_list)</li>
+<li>友情链接列表标签 (directive_friend_link_list)</li>
+<li>广告标签 (directive_advertise)</li>
+<li>图片标签 (directive_picture_list)</li>
+<li>相册图片标签 (directive_photo)</li>
+<li>相册图片列表标签 (directive_photo_list)</li>
+<li>相册标签 (directive_photo_category)</li>
+<li>相册列表标签 (directive_photo_category_list)</li>
+<li>视频标签 (directive_video)</li>
+<li>视频列表标签 (directive_video_list)</li>
+<li>活动标签 (directive_activity)</li>
+<li>活动列表标签 (directive_activity_list)</li>
+</ul>
+</li>
+<li>常用函数
+
+<ul>
+<li>获取日期字符串函数(${fn_date()})</li>
+<li>截取固定长度字符串并替换多余字符(${fn_replace(input, len, replacement)})</li>
+</ul>
+</li>
+<li>全局常用共享变量</li>
+</ul><p><strong>提示</strong></p>
+
+<blockquote>
+<p>本模板使用freemarker模板标记语言编写，使用时候用成对编写&lt;tag&gt;,&lt;/tag&gt;<br>
+使用每个变量前必须用加上括号和感叹号，以免空信息异常<br><strong>例子:</strong><br>
+变量获取(默认值为空): ${(variable_name)!}<br>
+变量获取(默认值为空): ${(variable_name)!"default"}</p>
+</blockquote>
+
+<h2>
+<a name="user-content-%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE" class="anchor" href="#%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>常用标签</h2>
+
+<h3>
+<a name="user-content-%E6%96%87%E7%AB%A0%E6%A0%87%E7%AD%BE" class="anchor" href="#%E6%96%87%E7%AB%A0%E6%A0%87%E7%AD%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>文章标签</h3>
+
+<p>待续...</p>
+
+<h3>
+<a name="user-content-%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%A0%87%E7%AD%BEdirective_config" class="anchor" href="#%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF%E6%A0%87%E7%AD%BEdirective_config" aria-hidden="true"><span class="octicon octicon-link"></span></a>配置信息标签(directive_config)</h3>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>key</td>
+    <td>String</td>
+    <td>Y</td>
+    <td>配置关键码</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_config key="key"/&gt;
+</code></pre>
+
+<p>其他数据在网站后台查看、修改、添加 (建议使用全局常量共享变量)</p>
+
+<h3>
+<a name="user-content-%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF%E6%A0%87%E7%AD%BE-directive_site" class="anchor" href="#%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF%E6%A0%87%E7%AD%BE-directive_site" aria-hidden="true"><span class="octicon octicon-link"></span></a>站点信息标签 (directive_site)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>siteAlias</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>站点别名</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_site customSiteId=1&gt;
+    siteId:         ${_entity_site.siteName!}
+    customSiteId:   ${_entity_site.customSiteId!}
+    siteName:       ${_entity_site.siteName!}
+    siteAlias:      ${_entity_site.siteAlias!}
+    url:            ${_entity_site.url!}
+    imageSiteUrl:   ${_entity_site.imageSiteUrl!}
+    staticSiteUrl:  ${_entity_site.staticSiteUrl!}
+    pageDir:        ${_entity_site.pageDir!}
+    imageDir:       ${_entity_site.imageDir!}
+    icon:           ${_entity_site.icon!}
+&lt;/@directive_site&gt;
+
+结果：
+siteId:         神曲官方网站
+customSiteId:   1
+url:            http://sq.wan.com
+icon:           31343030363630333239383135.jpg
+</code></pre>
+
+<p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>int</td>
+    <td>ID</td>
+</tr>
+<tr>
+<td>customSiteId</td>
+    <td>int</td>
+    <td>用户自定义的站点ID</td>
+</tr>
+<tr>
+<td>siteName</td>
+    <td>string</td>
+    <td>名称</td>
+</tr>
+<tr>
+<td>siteAlias</td>
+    <td>string</td>
+    <td>站点别名</td>
+</tr>
+<tr>
+<td>url</td>
+    <td>string</td>
+    <td>站点地址</td>
+</tr>
+<tr>
+<td>imageSiteUrl</td>
+    <td>string</td>
+    <td>站点图片域名URL</td>
+</tr>
+<tr>
+<td>staticSiteUrl</td>
+    <td>string</td>
+    <td>站点静态域名URL</td>
+</tr>
+<tr>
+<td>icon</td>
+    <td>string</td>
+    <td>图标</td>
+</tr>
+<tr>
+<td>pageDir</td>
+    <td>string</td>
+    <td>生成的页面存放目录</td>
+</tr>
+<tr>
+<td>imageDir</td>
+    <td>string</td>
+    <td>图片存放目录</td>
+</tr>
+<tr>
+<td>templateDir</td>
+    <td>string</td>
+    <td>模板存放目录</td>
+</tr>
+<tr>
+<td>createDate</td>
+    <td>DateTime</td>
+    <td>创建时间</td>
+</tr>
+</table><h3>
+<a name="user-content-%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF%E6%A0%87%E7%AD%BE-directive_site_list" class="anchor" href="#%E7%AB%99%E7%82%B9%E4%BF%A1%E6%81%AF%E6%A0%87%E7%AD%BE-directive_site_list" aria-hidden="true"><span class="octicon octicon-link"></span></a>站点信息标签 (directive_site_list)</h3>
+
+<p><strong>传递参数</strong><br>
+无</p>
+
+<p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_site_list&gt;
+    &lt;#list _list_entity_site as entity&gt;
+        siteId:         ${entity.siteName!}
+        customSiteId:   ${entity.customSiteId!}
+        url:            ${entity.url!}
+        icon:           ${entity.icon!}       
+    &lt;/#list&gt;
+&lt;/@directive_site_list&gt;
+
+结果：
+siteId:         神曲官方网站
+customSiteId:   1
+url:            http://sq.wan.com
+icon:           31343030363630333239383135.jpg
+....
+</code></pre>
+
+<h3>
+<a name="user-content-%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_friend_link_list" class="anchor" href="#%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_friend_link_list" aria-hidden="true"><span class="octicon octicon-link"></span></a>友情链接列表标签 (directive_friend_link_list)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>所属站点</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>siteName</td>
+    <td>String</td>
+    <td>友情链接显示名称</td>
+</tr>
+<tr>
+<td>siteUrl</td>
+    <td>String</td>
+    <td>友情链接地址</td>
+</tr>
+<tr>
+<td>logoUrl</td>
+    <td>String</td>
+    <td>友情链接logo URL地址</td>
+</tr>
+<tr>
+<td>siteDesc</td>
+    <td>String</td>
+    <td>友情链接描述</td>
+</tr>
+<tr>
+<td>siteEmail</td>
+    <td>String</td>
+    <td>友情链接站长联系邮箱</td>
+</tr>
+<tr>
+<td>siteQq</td>
+    <td>String</td>
+    <td>友情链接站长联系QQ</td>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>String</td>
+    <td>所属站点编号</td>
+</tr>
+<tr>
+<td>hidden</td>
+    <td>int</td>
+    <td>显示状态， 0: 显示， 1: 隐藏</td>
+</tr>
+<tr>
+<td>siteOrder</td>
+    <td>int</td>
+    <td>所排序编号</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_friend_link_list siteId=6&gt;
+    &lt;#list _list_friend_link as entity&gt;
+        siteName:       ${entity.siteName!}
+        siteUrl:        ${entity.siteUrl!}
+        logoUrl:        ${entity.logoUrl!}
+        siteDesc:       ${entity.siteDesc!}
+        siteEmail:      ${entity.siteEmail!}
+        siteQq:         ${entity.siteQq!}
+        siteId:         ${entity.siteId!}
+        hidden:         ${entity.hidden!}
+        siteOrder:      ${entity.siteOrder!}   
+    &lt;/#list&gt;
+&lt;/@directive_friend_link_list&gt;
+
+结果：
+    siteName:       37wan
+    siteUrl:        http://www.37wan.com
+    logoUrl:        
+    siteDesc:       37玩
+    siteEmail:      admin@37wan.com
+    siteQq:         37
+    siteId:         6
+    hidden:         1
+    siteOrder:      0
+
+    siteName:       4399
+    siteUrl:        http://web.4399.com
+    logoUrl:        http://web.4399.com/logo.gif
+    siteDesc:       4399
+    siteEmail:      admin@4399.com
+    siteQq:         9999
+    siteId:         6
+    hidden:         0
+    siteOrder:      1
+    ...
+</code></pre>
+
+<h3>
+<a name="user-content-%E5%B9%BF%E5%91%8A%E6%A0%87%E7%AD%BE-directive_advertise" class="anchor" href="#%E5%B9%BF%E5%91%8A%E6%A0%87%E7%AD%BE-directive_advertise" aria-hidden="true"><span class="octicon octicon-link"></span></a>广告标签 (directive_advertise)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>广告ID</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>int</td>
+    <td>广告ID</td>
+</tr>
+<tr>
+<td>title</td>
+    <td>String</td>
+    <td>广告标题</td>
+</tr>
+<tr>
+<td>imgeUrl</td>
+    <td>String</td>
+    <td>显示图片URL</td>
+</tr>
+<tr>
+<td>linkUrl</td>
+    <td>String</td>
+    <td>外链地址</td>
+</tr>
+<tr>
+<td>remark</td>
+    <td>String</td>
+    <td>备注</td>
+</tr>
+<tr>
+<td>createTime</td>
+    <td>Date</td>
+    <td>创建日期</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_advertise id=1&gt;
+    id:            ${_entity_advertise.id!}
+    title:         ${_entity_advertise.title!}
+    imgUrl:        ${_entity_advertise.imgUrl!}
+    linkUrl:       ${_entity_advertise.linkUrl!}
+    remark:        ${_entity_advertise.remark!}
+    createTime:    ${_entity_advertise.createTime!}
+
+    fn_replace:    ${fn_replace(_entity_advertise.linkUrl, 10)}
+&lt;/@directive_advertise&gt;
+
+结果:
+id:            1
+title:         弹弹堂选美
+imgUrl:        http://image.ddt.wan.com/images/ver1404/logo.png
+linkUrl:       http://www.7road.com
+remark:        首页右侧广告 100X100
+createTime:    2014-6-10 12:17:12
+
+fn_replace:    http://www...
+</code></pre>
+
+<h3>
+<a name="user-content-%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE-directive_picture_list" class="anchor" href="#%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE-directive_picture_list" aria-hidden="true"><span class="octicon octicon-link"></span></a>图片标签 (directive_picture_list)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>positionKey</td>
+    <td>string</td>
+    <td>Y</td>
+    <td>位置关键码</td>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>站点</td>
+</tr>
+<tr>
+<td>size</td>
+    <td>integer</td>
+    <td>N</td>
+    <td>显示记录条数</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>int</td>
+    <td>图片ID</td>
+</tr>
+<tr>
+<td>title</td>
+    <td>String</td>
+    <td>标题</td>
+</tr>
+<tr>
+<td>content</td>
+    <td>String</td>
+    <td>内容</td>
+</tr>
+<tr>
+<td>orderNum</td>
+    <td>int</td>
+    <td>序号</td>
+</tr>
+<tr>
+<td>remark</td>
+    <td>String</td>
+    <td>备注</td>
+</tr>
+<tr>
+<td>createTime</td>
+    <td>Date</td>
+    <td>创建日期</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_picture_list positionKey="rmglt" siteId=7&gt;
+    &lt;#list _list_entity_picture as entity&gt;
+        title:          ${entity.title!}
+        content:        ${entity.content!}
+        url:            ${entity.url!}
+        orderNum:       ${entity.orderNum!}
+
+    &lt;/#list&gt;
+&lt;/@directive_picture_list&gt;
+
+结果:
+    title:          测试标题1
+    content:        测试内容2
+    url:            /web7road/upload/picture/14030832787788832.jpg
+    orderNum:       1
+
+    title:          测试1
+    content:        测试内容1
+    url:            /web7road/upload/picture/14030832787788831.jpg
+    orderNum:       0
+</code></pre>
+
+<h3>
+<a name="user-content-%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE-directive_photo" class="anchor" href="#%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE-directive_photo" aria-hidden="true"><span class="octicon octicon-link"></span></a>相册图片标签 (directive_photo)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>图片ID</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>int</td>
+    <td>图片ID</td>
+</tr>
+<tr>
+<td>photoCategoryId</td>
+    <td>int</td>
+    <td>相册ID</td>
+</tr>
+<tr>
+<td>photoTitle</td>
+    <td>string</td>
+    <td>图片标题</td>
+</tr>
+<tr>
+<td>photoImageUrl</td>
+    <td>string</td>
+    <td>图片地址</td>
+</tr>
+<tr>
+<td>photoThumbnailUrl</td>
+    <td>string</td>
+    <td>缩略图地址</td>
+</tr>
+<tr>
+<td>createTime</td>
+    <td>DateTime</td>
+    <td>创建时间</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_photo id=1&gt;
+    id:                     ${_entity_photo.id!}
+    photoCategoryId:        ${_entity_photo.photoCategoryId!}
+    photoTitle:             ${_entity_photo.photoTitle!}
+    photoImageUrl:          ${_entity_photo.photoImageUrl!}
+    photoThumbnailUrl:      ${_entity_photo.photoThumbnailUrl!}
+    createTime:             ${_entity_photo.createTime!}
+&lt;/@directive_photo&gt;
+
+结果:
+id:                     1
+photoCategoryId:        1
+photoTitle:             弹弹堂截图
+photoImageUrl:          /web7road/upload/photo/14031605931460651.gif
+photoThumbnailUrl:      /web7road/upload/photo/14031605931460651.gif
+createTime:             2014-6-23 15:23:30
+</code></pre>
+
+<h3>
+<a name="user-content-%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_photo_list" class="anchor" href="#%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_photo_list" aria-hidden="true"><span class="octicon octicon-link"></span></a>相册图片列表标签 (directive_photo_list)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>photoCategoryId</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>相册ID</td>
+</tr>
+<tr>
+<td>size</td>
+    <td>integer</td>
+    <td>N</td>
+    <td>显示记录条数</td>
+</tr>
+</table><p><strong>返回参数</strong><br>
+参考相册图片标签(directive_photo)</p>
+
+<p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_photo_list photoCategoryId=3&gt;
+    &lt;#list _list_entity_photo as entity&gt;
+        id:                     ${entity.id!}
+        photoCategoryId:        ${entity.photoCategoryId!}
+        photoTitle:             ${entity.photoTitle!}
+        photoImageUrl:          ${entity.photoImageUrl!}
+        photoThumbnailUrl:      ${entity.photoThumbnailUrl!}
+        createTime:             ${entity.createTime!}
+
+    &lt;/#list&gt;
+&lt;/@directive_photo_list&gt;
+
+结果:
+    id:                     2
+    photoCategoryId:        3
+    photoTitle:             弹弹堂1
+    photoImageUrl:          /web7road/upload/photo/14035094346715399.jpg
+    photoThumbnailUrl:      
+    createTime:             2014-6-23 15:44:05
+
+    id:                     3
+    photoCategoryId:        3
+    photoTitle:             弹弹堂2
+    photoImageUrl:          /web7road/upload/photo/14035103051374744.jpg
+    photoThumbnailUrl:      
+    createTime:             2014-6-23 15:58:37
+...
+</code></pre>
+
+<h3>
+<a name="user-content-%E7%9B%B8%E5%86%8C%E6%A0%87%E7%AD%BE-directive_photo_category" class="anchor" href="#%E7%9B%B8%E5%86%8C%E6%A0%87%E7%AD%BE-directive_photo_category" aria-hidden="true"><span class="octicon octicon-link"></span></a>相册标签 (directive_photo_category)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>相册ID</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>int</td>
+    <td>ID</td>
+</tr>
+<tr>
+<td>photoCategoryName</td>
+    <td>string</td>
+    <td>相册名称</td>
+</tr>
+<tr>
+<td>photoCategoryCoverImageUrl</td>
+    <td>string</td>
+    <td>相册封面图片</td>
+</tr>
+<tr>
+<td>createTime</td>
+    <td>DateTime</td>
+    <td>创建时间</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_photo_category id=1&gt;
+    id:                         ${_entity_photo_category.id!}
+    siteId:                     ${_entity_photo_category.siteId!}
+    photoCategoryName:          ${_entity_photo_category.photoCategoryName!}
+    photoCategoryCoverImageUrl: ${_entity_photo_category.photoCategoryCoverImageUrl!}
+    createTime:                 ${_entity_photo_category.createTime!}
+&lt;/@directive_photo_category&gt;
+
+结果:
+id:                         1
+siteId:                     7
+photoCategoryName:          游戏截图
+photoCategoryCoverImageUrl: /web7road/upload/photo/14031605931460651.gif
+createTime:                 2014-6-19 12:30:40
+</code></pre>
+
+<h3>
+<a name="user-content-%E7%9B%B8%E5%86%8C%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_photo_category_list" class="anchor" href="#%E7%9B%B8%E5%86%8C%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_photo_category_list" aria-hidden="true"><span class="octicon octicon-link"></span></a>相册列表标签 (directive_photo_category_list)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>站点</td>
+</tr>
+<tr>
+<td>size</td>
+    <td>integer</td>
+    <td>N</td>
+    <td>显示记录条数</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>int</td>
+    <td>ID</td>
+</tr>
+<tr>
+<td>photoCategoryName</td>
+    <td>string</td>
+    <td>相册名称</td>
+</tr>
+<tr>
+<td>photoCategoryCoverImageUrl</td>
+    <td>string</td>
+    <td>相册封面图片</td>
+</tr>
+<tr>
+<td>createTime</td>
+    <td>DateTime</td>
+    <td>创建时间</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_photo_category_list siteId=7&gt;
+    &lt;#list _list_entity_photo_category as entity&gt;
+        id:                         ${entity.id!}
+        siteId:                     ${entity.siteId!}
+        photoCategoryName:          ${entity.photoCategoryName!}
+        photoCategoryCoverImageUrl: ${entity.photoCategoryCoverImageUrl!}
+        createTime:                 ${entity.createTime!}
+
+    &lt;/#list&gt;
+&lt;/@directive_photo_category_list&gt;
+
+结果:
+    id:                         5
+    siteId:                     7
+    photoCategoryName:          游戏漫画
+    photoCategoryCoverImageUrl: 
+    createTime:                 2014-6-23 14:22:33
+...
+</code></pre>
+
+<h3>
+<a name="user-content-%E8%A7%86%E9%A2%91%E6%A0%87%E7%AD%BE-directive_video" class="anchor" href="#%E8%A7%86%E9%A2%91%E6%A0%87%E7%AD%BE-directive_video" aria-hidden="true"><span class="octicon octicon-link"></span></a>视频标签 (directive_video)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>编号</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>int</td>
+    <td>ID</td>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>int</td>
+    <td>所属站点id</td>
+</tr>
+<tr>
+<td>stateId</td>
+    <td>int</td>
+    <td>视频状态ID, 参考当前数据字典</td>
+</tr>
+<tr>
+<td>videoTitle</td>
+    <td>string</td>
+    <td>视频标题</td>
+</tr>
+<tr>
+<td>videoUrl</td>
+    <td>string</td>
+    <td>视频链接地址</td>
+</tr>
+<tr>
+<td>videoImg</td>
+    <td>string</td>
+    <td>视频的缩略图</td>
+</tr>
+<tr>
+<td>enableFlag</td>
+    <td>int</td>
+    <td>是否可用，1，标识可用，0标识不可用</td>
+</tr>
+<tr>
+<td>createDate</td>
+    <td>DateTime</td>
+    <td>创建时间</td>
+</tr>
+<tr>
+<td>updateDate</td>
+    <td>DateTime</td>
+    <td>更新时间</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_video id=1&gt;
+...省略
+&lt;/@directive_video&gt;
+
+结果:
+...省略
+</code></pre>
+
+<h3>
+<a name="user-content-%E8%A7%86%E9%A2%91%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_video_list" class="anchor" href="#%E8%A7%86%E9%A2%91%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_video_list" aria-hidden="true"><span class="octicon octicon-link"></span></a>视频列表标签 (directive_video_list)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>所属站点id</td>
+</tr>
+<tr>
+<td>size</td>
+    <td>integer</td>
+    <td>N</td>
+    <td>显示记录条数</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>int</td>
+    <td>ID</td>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>int</td>
+    <td>所属站点id</td>
+</tr>
+<tr>
+<td>stateId</td>
+    <td>int</td>
+    <td>视频状态ID, 参考当前数据字典</td>
+</tr>
+<tr>
+<td>videoTitle</td>
+    <td>string</td>
+    <td>视频标题</td>
+</tr>
+<tr>
+<td>videoUrl</td>
+    <td>string</td>
+    <td>视频链接地址</td>
+</tr>
+<tr>
+<td>videoImg</td>
+    <td>string</td>
+    <td>视频的缩略图</td>
+</tr>
+<tr>
+<td>enableFlag</td>
+    <td>int</td>
+    <td>是否可用，1，标识可用，0标识不可用</td>
+</tr>
+<tr>
+<td>createDate</td>
+    <td>DateTime</td>
+    <td>创建时间</td>
+</tr>
+<tr>
+<td>updateDate</td>
+    <td>DateTime</td>
+    <td>更新时间</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_video_list siteId=1&gt;
+...省略
+&lt;/@directive_video_list&gt;
+
+结果:
+...省略
+</code></pre>
+
+<h3>
+<a name="user-content-%E6%B4%BB%E5%8A%A8%E6%A0%87%E7%AD%BE-directive_activity" class="anchor" href="#%E6%B4%BB%E5%8A%A8%E6%A0%87%E7%AD%BE-directive_activity" aria-hidden="true"><span class="octicon octicon-link"></span></a>活动标签 (directive_activity)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>编号</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>int</td>
+    <td>ID</td>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>int</td>
+    <td>所属站点id</td>
+</tr>
+<tr>
+<td>activityTitle</td>
+    <td>string</td>
+    <td>活动的标题</td>
+</tr>
+<tr>
+<td>activitySummary</td>
+    <td>string</td>
+    <td>活动的简介</td>
+</tr>
+<tr>
+<td>activityUrl</td>
+    <td>string</td>
+    <td>活动的链接url</td>
+</tr>
+<tr>
+<td>activityImg</td>
+    <td>string</td>
+    <td>活动的图片</td>
+</tr>
+<tr>
+<td>hidden</td>
+    <td>int</td>
+    <td>是否隐藏，1标识隐藏 0 标识显示</td>
+</tr>
+<tr>
+<td>startDate</td>
+    <td>DateTime</td>
+    <td>活动的开始日期</td>
+</tr>
+<tr>
+<td>endDate</td>
+    <td>DateTime</td>
+    <td>活动的结束日期</td>
+</tr>
+<tr>
+<td>createDate</td>
+    <td>DateTime</td>
+    <td>创建时间</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_activity id=1&gt;
+...省略
+&lt;/@directive_activity&gt;
+
+结果:
+...省略
+</code></pre>
+
+<h3>
+<a name="user-content-%E6%B4%BB%E5%8A%A8%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_activity_list" class="anchor" href="#%E6%B4%BB%E5%8A%A8%E5%88%97%E8%A1%A8%E6%A0%87%E7%AD%BE-directive_activity_list" aria-hidden="true"><span class="octicon octicon-link"></span></a>活动列表标签 (directive_activity_list)</h3>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>integer</td>
+    <td>Y</td>
+    <td>所属站点id</td>
+</tr>
+<tr>
+<td>size</td>
+    <td>integer</td>
+    <td>N</td>
+    <td>显示记录条数</td>
+</tr>
+</table><p><strong>返回参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>id</td>
+    <td>int</td>
+    <td>ID</td>
+</tr>
+<tr>
+<td>siteId</td>
+    <td>int</td>
+    <td>所属站点id</td>
+</tr>
+<tr>
+<td>activityTitle</td>
+    <td>string</td>
+    <td>活动的标题</td>
+</tr>
+<tr>
+<td>activitySummary</td>
+    <td>string</td>
+    <td>活动的简介</td>
+</tr>
+<tr>
+<td>activityUrl</td>
+    <td>string</td>
+    <td>活动的链接url</td>
+</tr>
+<tr>
+<td>activityImg</td>
+    <td>string</td>
+    <td>活动的图片</td>
+</tr>
+<tr>
+<td>hidden</td>
+    <td>int</td>
+    <td>是否隐藏，1标识隐藏 0 标识显示</td>
+</tr>
+<tr>
+<td>startDate</td>
+    <td>DateTime</td>
+    <td>活动的开始日期</td>
+</tr>
+<tr>
+<td>endDate</td>
+    <td>DateTime</td>
+    <td>活动的结束日期</td>
+</tr>
+<tr>
+<td>createDate</td>
+    <td>DateTime</td>
+    <td>创建时间</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>&lt;@directive_activity_list siteId=1&gt;
+...省略
+&lt;/@directive_activity_list&gt;
+
+结果:
+...省略
+</code></pre>
+
+<h2>
+<a name="user-content-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0" class="anchor" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>常用函数</h2>
+
+<h3>
+<a name="user-content-%E8%8E%B7%E5%8F%96%E6%97%A5%E6%9C%9F%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0fn_date" class="anchor" href="#%E8%8E%B7%E5%8F%96%E6%97%A5%E6%9C%9F%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0fn_date" aria-hidden="true"><span class="octicon octicon-link"></span></a>获取日期字符串函数(${fn_date()})</h3>
+
+<pre><code>${fn_date('L')} result=yyyyMMddhhmmss  
+${fn_date('S')} result=yyyyMMdd  
+${fn_date()} result=时间戳  
+
+结果:
+${fn_date()} = 1402279570991
+${fn_date('L')} = 20140609100610
+${fn_date('S')} = 20140609
+</code></pre>
+
+<h3>
+<a name="user-content-%E6%88%AA%E5%8F%96%E5%9B%BA%E5%AE%9A%E9%95%BF%E5%BA%A6%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%BD%99%E5%AD%97%E7%AC%A6fn_replaceinput-len-replacement" class="anchor" href="#%E6%88%AA%E5%8F%96%E5%9B%BA%E5%AE%9A%E9%95%BF%E5%BA%A6%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B9%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%BD%99%E5%AD%97%E7%AC%A6fn_replaceinput-len-replacement" aria-hidden="true"><span class="octicon octicon-link"></span></a>截取固定长度字符串并替换多余字符(${fn_replace(input, len, replacement)})</h3>
+
+<p><strong>用法:</strong><br>
+${fn_replace(input, len)}<br>
+${fn_replace(input, len, replacement)}</p>
+
+<p><strong>传递参数</strong></p>
+
+<table>
+<tr>
+<th>参数</th>
+    <th>类型</th>
+    <th>必须</th>
+    <th>描述</th>
+</tr>
+<tr>
+<td>input</td>
+    <td>string</td>
+    <td>Y</td>
+    <td>输入字符串</td>
+</tr>
+<tr>
+<td>input</td>
+    <td>int</td>
+    <td>Y</td>
+    <td>显示多少字符，超过替换 [replacement]</td>
+</tr>
+<tr>
+<td>replacement</td>
+    <td>string</td>
+    <td>N</td>
+    <td>替换字符串</td>
+</tr>
+</table><p><strong>使用方式</strong></p>
+
+<pre><code>例子:
+${fn_replace("1234567890", 5)}
+${fn_replace("1234567890", 5, "...more")}
+
+结果:
+12345...
+12345...more
+</code></pre>
+
+<h2>
+<a name="user-content-%E5%85%A8%E5%B1%80%E5%B8%B8%E7%94%A8%E5%85%B1%E4%BA%AB%E5%8F%98%E9%87%8F" class="anchor" href="#%E5%85%A8%E5%B1%80%E5%B8%B8%E7%94%A8%E5%85%B1%E4%BA%AB%E5%8F%98%E9%87%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>全局常用共享变量</h2>
+
+<p>包括网站常用可以配置数据和经常需要变动的数据 </p>
+
+<pre><code>${globals["key"]!}
+
+${globals["sys.title"]!}
+${globals["sys.host"]!}
+${globals["sys.keywords"]!}
+
+结果:
+第七大道官网
+http://www.7road.com
+神曲、弹弹堂
+
+...
+其他常用变量请参考网站后台常量配置
+</code></pre>
+
+<p>待续...</p></body></html>

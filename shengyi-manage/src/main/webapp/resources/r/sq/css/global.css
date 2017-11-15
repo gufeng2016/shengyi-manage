@@ -1,0 +1,685 @@
+﻿@charset "utf-8";
+body{   
+    color:#707070;
+    line-height:24px;
+    font-size:12px;
+    font-family: "宋体","Microsoft Yahei";
+}
+img { border: none; }
+ul,li{
+    list-style:none;
+}
+/*修正弹出窗在ie6下随滚动条闪烁*/
+html,body{  
+    _background-image:url(about:blank);
+    _background-attachment:fixed;
+}
+a{
+    color:#707070;
+    outline:none;
+    _outline:expression(this.hideFocus=true);
+    
+}
+a:hover{
+    text-decoration:none;
+}
+em,i{
+    font-style:normal;
+}
+html {
+	overflow-x: hidden;
+}
+
+
+/* 导航 */
+.inav {
+    position: relative;
+    width: 100%;
+    height: 60px;   
+}
+.ilogo {
+    position: absolute;
+    left: 50%;
+    top: 30px;
+    margin-left: -60px;
+    width: 143px;
+    height: 75px;
+    background: url(http://image.sq.wan.com/sq/logo.png) no-repeat;
+    z-index: 10;    
+}
+.inavBox {
+    width: 980px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+.inavBox a {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    margin-top: 10px;
+    width: 80px;
+    font: normal 18px/22px 'Microsoft Yahei';
+    color: #314676; 
+    text-align: center; 
+    margin-left: 52px;  
+    height: 40px;
+    background: url(http://image.sq.wan.com/sq/navBg.png) no-repeat 5px 2px;    
+    overflow: hidden;
+}
+.inavBox a:hover {
+    color: #314676;
+}
+.inavBox .ihome {
+    margin-left: 0; 
+}
+.inavBox .ihome:hover {
+    background-position: 5px -47px;
+}
+.inavBox .inews {
+    background-position: -115px 2px;
+}
+.inavBox .inews:hover {
+    background-position: -115px -47px;
+}
+.inavBox .imaterlal {
+    background-position: -236px 2px;
+}
+.inavBox .imaterlal:hover {
+    background-position: -236px -47px;
+}
+.inavBox .ievents {
+    margin-left: 260px;
+    background-position: -356px 2px;
+}
+.inavBox .ievents:hover {   
+    background-position: -356px -47px;
+}
+.inavBox .irecharge {
+    background-position: -497px 2px;
+}
+.inavBox .irecharge:hover {
+    background-position: -497px -47px;
+}
+.inavBox .ipostbar {
+    cursor: pointer;
+    background-position: -646px 2px;
+}
+.inavBox .ipostbar:hover {  
+    background-position: -646px -47px;
+}
+
+
+.inavBox a span {
+    display: block;
+    height: 18px;
+    line-height: 18px;
+    color: #3f527d;
+    font-size: 12px;        
+    letter-spacing: 1px;
+    -webkit-transform: scale(.8);
+    -moz-transform: scale(.8);
+}
+
+/* 顶部flash */
+.topFlash {
+    height: 394px;
+}
+.topFlashBox {
+    position: absolute;
+    width: 1000px;
+    left: 50%;
+    margin-left: -500px;
+}
+
+
+
+/* 左栏 */
+.ileftSide {
+    position: relative;
+    top: -58px;
+    width: 238px;
+    float: left;
+    display: inline;    
+    background: url(http://image.sq.wan.com/sq/loginbg.jpg) no-repeat 0 171px;
+}
+
+.ileftBox {
+    margin-bottom: 10px;
+}
+.ileftBox h3 {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #3f475b;
+    font-family: "Microsoft Yahei", "微软雅黑";
+    font-size: 16px;
+    color: #d1d2d3;
+    font-weight: normal;
+}
+.ileftBox h3 small {
+    float: right;
+    margin-bottom: 10px;
+}
+.ileftBox h3 small a {
+    color: #515663;
+    font-size: 12px;    
+}
+.ileftBox h3 small a:hover {
+    color: #d1d2d3; 
+}
+
+/*开始游戏*/
+.starGame {
+    width: 228px;
+    margin: 0 auto;
+}
+
+/* 登录 */
+.iuserBox {
+    width: 237px;
+    height: 160px;      
+    *height: 180px;
+}
+.iloginBox {    
+    margin-top: 30px;
+    padding: 0 19px;
+}
+.iinputBox {
+    position: relative;
+    float: left;
+    display: inline;
+}
+.ipassword {
+    top: 3px;
+}
+.iinputBox label {
+    position: absolute;
+    left: 10px;
+    top: 2px;
+    color: #949BAE;
+}
+.iinputBox input {
+    padding-left: 5px;
+    width: 131px;
+    height: 23px;
+    border: 1px solid #3b435a;
+    background: #181d2a;
+    color: #fff;
+}
+.iloginBtn {
+    float: right;
+    display: inline;
+    width: 55px;
+    height: 54px;
+    background: url(http://image.sq.wan.com/sq/homeLeft.png) no-repeat -1px -175px;
+    line-height: 54px;
+    text-align: center;
+    color: #E8F0FD;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.iloginBtn:hover {
+    color: #fff;
+    background-position: -59px -175px;
+}
+.iloginLine {
+    position: relative;
+    top: 10px;
+    clear: both;
+    display: block;
+    height: 2px;
+    font-size: 0;
+    margin-bottom: 15px;
+    background: url(http://image.sq.wan.com/sq/homeLeft.png) no-repeat 0 -386px;
+}
+.iremember {
+    text-align: center;
+    color: #959DAE;
+}
+.iremember span {
+    margin: 0 15px;
+}
+.iremember a {
+    color: #D4DBF2;
+    text-decoration: underline;
+}
+.iremember a:hover {
+    color: #D2DBEE;
+}
+.quickRegBtn {
+    display: block;
+    margin: 10px auto;
+    width: 200px;
+    height: 28px;
+    background: #972516;
+    box-shadow: 1px 0 2px #000;
+    font-family: "Microsoft Yahei", "微软雅黑";
+    color: #d1d2d3;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #c43b2a;
+}
+.quickRegBtn:hover {
+    color: #d1d2d3;
+    border-top-color: #e25b42;
+    background: #c43a23;
+}
+/* 登录后 */
+.ilogined {
+    display: none;
+    margin: 30px 19px 0;    
+    color: #595f6e;
+}
+.quit,
+.user-name {
+    color: #949cae;
+}
+.user-name {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: auto !important;
+    width: 108px;
+    max-width: 108px;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    font-family: 'Microsoft Yahei';
+}
+.quit:hover,
+.user-name:hover {
+    color: #d2dbf0;
+}
+
+.complete {
+    padding: 0 8px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    height: 25px;
+    line-height: 25px;
+    background: #31589b;
+    border-top: 1px solid #5c88d4;
+    box-shadow: 2px 2px 2px #000;
+}
+.complete a {
+    color: #c0c2c6;
+    font-family: "Microsoft Yahei", "微软雅黑";
+    font-size: 14px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.last-server {
+    padding: 0 5px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;   
+}
+.last-server a {
+    color: #949cae;
+}
+.last-server a:hover {
+    color: #d2dbf0;
+}
+
+/* 快速通道 */
+.quickLink a {
+    display: block;
+    width: 238px;
+    height: 49px;
+    margin: 5px 0;
+    text-indent: -9999px;
+    background: url(http://image.sq.wan.com/sq/homeLeft.png) no-repeat;    
+}
+.quickLink .ipacks {
+    height: 48px;
+    background-position: 0 -53px;
+}
+.downLink a {
+    float: left;
+    display: inline;
+    width: 114px;
+    height: 68px;
+    text-indent: -9999px;
+    background: url(http://image.sq.wan.com/sq/homeLeft.png) no-repeat 0 -104px;    
+}
+.downLink a:hover {
+    background-position: left bottom;
+}
+.downLink .downLink02 {
+    margin-left: 9px;
+    background-position: -124px -104px;
+}
+.downLink .downLink02:hover {
+    background-position: right bottom;
+}
+
+
+/* 快速选服 */
+.quick {
+    margin: 10px 0 5px 10px;    
+}
+.quick span,    
+.quick input,
+.quick a {
+    float: left;
+    display: inline;
+    color: #949cae;
+}
+.quick input {  
+    width: 95px;
+    height: 18px;
+    border: 1px solid #3c445b;
+    border-right: none;
+    background: #181d2a;
+    outline: none;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+}
+.quick input:focus {
+    border-color: #3c4e77;
+}
+.quick a {
+    border: 1px solid #3c4e77;
+    background: #3f527d;
+    color: #d1d2d3;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 5px; 
+}
+.quick a:hover {
+    color: #d1d2d3;
+}
+.server ul li {
+    width: 238px;
+    height: 30px;
+    line-height: 30px;      
+    overflow: hidden;
+}
+.server ul .liCs0 a,
+.server ul .liCs0 a:hover {
+    color: #ff8034
+}
+.server ul .liCs1 a,
+.server ul .liCs1 a:hover {
+    color: #8eaefe
+}
+.server ul li span {
+    float: left;
+    display: inline;
+    width: 9px;
+    height: 9px;
+    font-size: 0;
+    line-height: 0;
+    margin: 11px 10px 0 11px;
+    background: url(http://image.sq.wan.com/sq/homeLeft.png) no-repeat -229px -175px;
+}
+.server ul li a {
+    float: left;
+    display: inline;
+    width: 195px;    
+    color: #969DB0;
+}
+.server ul li a:hover {
+    color: #D2DBF0;
+}
+.server ul li a em {
+    float: right;
+    display: inline;
+    padding-right: 35px;
+    background: url(http://image.sq.wan.com/sq/new.jpg) no-repeat center right;
+}
+.server ul .liCs0 em {
+    background: url(http://image.sq.wan.com/sq/hot.jpg) no-repeat center right;
+}
+.server .more-service {
+    display: block;
+    margin: 15px auto 0;
+    width: 239px;
+    height: 30px;
+    line-height: 30px;
+    background: #43527b;
+    color: #c0c2c4;
+    font-size: 14px;
+    text-align: center;
+    font-family: "Microsoft Yahei", "微软雅黑";
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;  
+}
+.server .more-service:hover {
+    box-shadow: 0 0 2px #000;
+    color: #fff;
+}
+
+/* 排行榜 */
+.irankBox {
+    font-size: 13px;
+    margin-bottom: 10px;
+    height: 260px;
+}
+.irankSelectBox {   
+    position: relative; 
+    top: 10px;
+    height: 40px;
+}
+.irankSelect {  
+    position: absolute;
+    left: 10px;
+    width: 97px;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 8px;  
+    border: 1px solid #3c445b;  
+    background: #181d2a;
+    cursor: pointer;
+    overflow: hidden;
+}
+.irankCond {
+    left: 130px;    
+}
+.irankSelect em {
+    float: right;   
+    display: inline;
+    margin: 1px 1px 0 0;
+    width: 16px;
+    height: 18px;
+    background: url(http://image.sq.wan.com/sq/homeLeft.png) no-repeat -203px -175px;    
+}
+.irankSelectList {
+    display: none;
+    position: absolute;
+    top: 21px;
+    left: 10px;
+    width: 105px;
+    padding-bottom: 5px;
+    border: 1px solid #3c445b;
+    border-top: none;   
+    color: #252c3b;
+    background: #fff;
+}
+.irankServerList {
+    max-height: 240px;
+    _height: 240px; 
+    overflow: auto; 
+}
+.irankCondList {
+    left: 130px;    
+}
+
+.irankSelectList li a {
+    display: block;
+    padding: 0 5px; 
+    width: 95px;
+    white-space: nowrap; 
+    word-break: keep-all;
+    overflow: hidden;    
+    -webkit-transition: background .25s linear;
+       -moz-transition: background .25s linear;
+        -ms-transition: background .25s linear;
+         -o-transition: background .25s linear;
+}
+.irankSelectList li a:hover {
+    background: #ddd;
+}
+
+.rank-nav {
+    width: 100%;
+    height: 24px;
+    color: #949cae;
+    overflow: hidden;
+}
+.rank-list {
+    height: 240px;
+    line-height: 24px;
+    color: #969DB0;
+    background: url(http://image.sq.wan.com/sq/rankbg.jpg) no-repeat 15px -3px;
+}
+.rank-list ul li span,.rank-list ul li i,.rank-list ul li em,
+.rank-nav span, .rank-nav i, .rank-nav em {
+    float: left;
+    display: inline;
+    overflow: hidden;
+}
+.rank-nav span {
+    width: 35px;
+    padding-left: 20px;     
+}
+.rank-nav i {
+    width: 110px;
+    text-align: center;
+}
+.rank-list ul li em,
+.rank-nav em {
+    width: 58px;
+    text-align: center;
+}
+.rank-list ul li span {
+    width: 30px;
+    text-align: center;
+    margin: 0 5px 0 15px;
+    text-indent: -9999px;
+}
+.rank-list ul li i {
+    width: 95px;
+    text-align: left;
+    padding-left: 20px; 
+}
+
+/* 联系方式 */
+.icontact a {
+    display: block;
+    width: 238px;
+    height: 47px;
+    margin: 8px 0;
+    background: url(http://image.sq.wan.com/sq/homeLeft.png) no-repeat 0 -234px;
+}
+.icontact .icustser {   
+    background-position: 0 -285px;
+}
+.icontact .icomemail {  
+    background-position: 0 -336px;
+}
+
+
+
+
+/*右栏  */
+.irightSide {
+    margin-left: 20px;
+    float: left;
+    display: inline;
+    width: 718px;
+}
+
+/*显示版本专题图片*/
+.theme54{position: absolute; left: 50%; margin-left:145px; top: 109px; width: 435px; height: 254px; background: url(http://image5.sq.wan.com/sq/theme4.png?v=20140624) left top no-repeat;}
+
+/*内页及内页菜单*/
+.innerPage{
+    background:#2e3547; 
+    padding-bottom:50px;
+    min-height: 1035px;
+}
+.inner-tit{ 
+    height:74px; 
+    line-height:74px; 
+    font-size:12px; 
+    text-align:right; 
+    padding-left:28px; 
+    padding-right:28px; 
+    border-bottom:1px solid #353f59; 
+    background:url(http://image.sq.wan.com/sq/news/inner-tit.jpg) left top no-repeat;
+    color:#6b7da3;
+}
+.inner-tit{ 
+    font-family:"Microsoft Yahei","宋体";
+}
+.inner-tit .t{
+    display: inline-block; 
+    color: #a1baff; 
+    font-size: 24px; 
+    float: left; 
+    overflow: hidden; 
+    height: 72px;
+}
+.inner-tit .t em{
+    font-size: 14px; 
+    margin-left: 7px; 
+    color: #475985;
+}
+.inner-tit a{ 
+    color:#6b7da3; 
+    cursor:pointer;
+}
+.inner-picDown .inner-tit{ 
+    background-position:left top;
+}
+
+
+.inner-cont{ 
+    padding:20px 32px; 
+    overflow:hidden;
+}
+.news-list-nav{ 
+    float:left; 
+    padding:1px 0 1px 1px; 
+    margin-bottom:20px;
+    width: 100%;
+}
+.news-list-nav a{ 
+    display:inline-block; 
+    float:left; 
+    width:84px; 
+    height:32px; 
+    border:1px solid #3c4a6b; 
+    text-align:center; 
+    line-height:32px; 
+    color:#8698c4; 
+    background:#384564; 
+    margin-right:1px; 
+    position:relative;
+    cursor: pointer;
+}
+.news-list-nav a i{ 
+    display:none; 
+    width:21px; 
+    height:6px; 
+    position:absolute; 
+    left:50%; 
+    margin-left:-10px; 
+    top:100%;
+    background:url(http://image.sq.wan.com/sq/news/nav-ico-bot.png) left top no-repeat;
+}
+.news-list-nav a.on{ 
+    color:#fff; 
+    background:#3f527d; 
+    border:1px solid #4d6498;
+}
+.news-list-nav a.on i{ 
+    display:inline-block;
+}
+

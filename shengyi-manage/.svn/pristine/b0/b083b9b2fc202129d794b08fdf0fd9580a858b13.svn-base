@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+    
+<tiles-definitions>
+    <!-- 游戏配置管理 -->
+    <definition name="config.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/config/list.jsp"/>
+    </definition>
+
+    <definition name="config.add" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/config/add.jsp"/>
+    </definition>
+
+    <definition name="config.update" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/config/update.jsp"/>
+    </definition>
+    
+    <!-- 游戏管理 -->
+    <definition name="game.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/game/list.jsp"/>
+    </definition>
+
+    <definition name="game.add" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/game/add.jsp"/>
+    </definition>
+
+    <definition name="game.update" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/game/update.jsp"/>
+    </definition>
+    
+    <!-- 玩家管理 -->
+	<definition name="player.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/player/list.jsp"/>
+    </definition>
+    
+    <definition name="player.add" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/player/add.jsp"/>
+    </definition>
+    
+    <definition name="player.update" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/player/update.jsp"/>
+    </definition>
+    
+    <definition name="player.balanceLog.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/player/balanceLogList.jsp"/>
+    </definition>
+    
+    <!-- 运营管理 -->
+	<definition name="operator.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/operator/list.jsp"/>
+    </definition>
+    
+    <definition name="operator.add" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/operator/add.jsp"/>
+    </definition>
+    
+    <definition name="operator.update" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/operator/update.jsp"/>
+    </definition>
+    
+	<!-- 代理管理 -->
+	<definition name="agent.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/agent/list.jsp"/>
+    </definition>
+    
+    <definition name="agent.add" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/agent/add.jsp"/>
+    </definition>
+    
+    <definition name="agent.update" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/agent/update.jsp"/>
+    </definition>
+    
+    <definition name="agent.player.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/agent/playerList.jsp"/>
+    </definition>
+    
+    <!-- 账单管理 -->
+	<definition name="bill.settlement.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/bill/settlementList.jsp"/>
+    </definition>
+    
+   	<definition name="bill.notSettlement.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/bill/notSettlementList.jsp"/>
+    </definition>
+    
+    <definition name="bill.current.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/bill/currentList.jsp"/>
+    </definition>
+    
+   	<definition name="bill.detail.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/bill/detailList.jsp"/>
+    </definition>
+
+    <!-- 报表管理 -->
+	<definition name="game.report.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/report/gameReport.jsp"/>
+    </definition>
+   <definition name="player.report.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/report/playerReport.jsp"/>
+    </definition>
+    
+    <!-- 游戏日志管理 -->
+	<definition name="game.sore.log.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/log/scoreLogList.jsp"/>
+    </definition>
+    <definition name="game.play.num.log.list" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/web/game/log/playNumLogList.jsp"/>
+    </definition>
+    
+    
+    
+</tiles-definitions>

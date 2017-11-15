@@ -1,0 +1,42 @@
+/**
+ */
+package com.sz.service.recharge.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.sz.common.util.StringUtil;
+import com.sz.dao.recharge.RechargeDao;
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.recharge.RechargeOrder;
+import com.sz.pojo.manage.sqlEntry.SQLCondition;
+import com.sz.service.recharge.RechargeService;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-17   上午10:23:28 
+ * @version 1.0.0 
+ */
+@Service
+public class RechargeServiceImpl implements RechargeService{
+	
+	@Autowired
+	private RechargeDao rechargeDao;
+
+	/**
+	 * @throws Exception 
+	 */
+	@Override
+	public PaginationResult<RechargeOrder> queryUserRechargeList(PageInfo info, String mobile) throws Exception {
+		List<SQLCondition> lists = new ArrayList<SQLCondition>();
+		if(!StringUtil.isNullOrEmpty(mobile)){
+			lists.add(new SQLCondition("mobile", mobile,true));
+		}
+		return rechargeDao.queryUserRechargeList(RechargeOrder.class, lists, info, "");
+	}
+}

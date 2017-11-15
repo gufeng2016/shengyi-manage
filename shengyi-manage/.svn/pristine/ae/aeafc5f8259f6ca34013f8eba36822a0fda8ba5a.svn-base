@@ -1,0 +1,64 @@
+/**
+ */
+package com.sz.dao.recharge.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.sz.common.annotation.ChooseDataSource;
+import com.sz.common.constant.DataSourceConstant;
+import com.sz.common.db.JDBCBaseDao;
+import com.sz.common.util.ReflectUtil;
+import com.sz.dao.recharge.RechargeDao;
+import com.sz.pojo.manage.page.PageInfo;
+import com.sz.pojo.manage.page.PaginationResult;
+import com.sz.pojo.manage.recharge.RechargeOrder;
+import com.sz.pojo.manage.sqlEntry.SQLCondition;
+
+/**
+ * 
+ * @author goff.yin 
+ * @date 2017-8-17   上午10:24:28 
+ * @version 1.0.0 
+ */
+@Repository
+public class RechargeDaoImpl implements RechargeDao{
+	@Autowired
+	private JDBCBaseDao jdbcDao;
+	
+	private static String nickName = "rc";
+
+	/**
+	 */
+	@Override
+	@ChooseDataSource(mainType=DataSourceConstant.BIZ_TYPE_SLAVE,bizType=DataSourceConstant.PROJECT_SUFFIX)
+	public PaginationResult<RechargeOrder> queryUserRechargeList( Class<RechargeOrder> clazz, List<SQLCondition> conditions, PageInfo info, String string) throws Exception {
+		String sqlParams = ReflectUtil.createSqlParams(clazz,nickName);
+		sqlParams = sqlParams.replace((nickName+".mobile").toUpperCase(), "AC.MOBILE");
+		String sqlMuBan = "SELECT %s FROM t_recharge_order %s LEFT JOIN T_ACCOUNT AC ON %s.USER_ID = AC.USER_ID where 1=1 ";
+		String sql = String.format(sqlMuBan, sqlParams,nickName,nickName);
+		String sqlFoot = "";
+		List<Object> args = new ArrayList<Object>();
+		if(conditions != null && conditions.size()>0){
+			for (SQLCondition con : conditions) {
+				if(con.isLike()){
+					sqlFoot += " and "+("AC."+con.getKey()).toUpperCase() + " like ?";
+					args.add("%"+con.getValue()+"%");
+				}else{
+					sqlFoot += " and "+(nickName+"."+con.getKey()).toUpperCase() + " = ?";
+					args.add(con.getValue());
+				}
+			}
+		}
+		int count = jdbcDao.queryForInt(String.format(sqlMuBan, "count(1)",nickName,nickName)+sqlFoot,args.toArray());
+		sql += sqlFoot + " limit ?,? ";
+		args.add(info.getStartRow());
+		args.add(info.getPageSize());
+		List<RechargeOrder> lists = jdbcDao.queryList(clazz, sql,args.toArray());
+		return new PaginationResult<RechargeOrder>(count, lists);
+	}
+	
+}
